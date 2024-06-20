@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'app', redirectTo: 'app/list-event'},
   {path: 'app', component: SidebarComponent, children: [
     {path: 'list-event', component: ListEventComponent},
-    {path: 'ajout-event', component: AjoutEventComponent},
+    {path: 'ajout-event', component: AjoutEventComponent}
   ]
   },
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
