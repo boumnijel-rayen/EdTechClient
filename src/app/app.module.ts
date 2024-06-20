@@ -10,6 +10,14 @@ import { LoginComponent } from './Home/login/login.component';
 import { RegisterComponent } from './Home/register/register.component';
 import { HomeComponent } from './Home/home/home.component';
 import { RouterModule } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
+import { SidebarModule } from 'primeng/sidebar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SplitterModule } from 'primeng/splitter';
+import {Avatar, AvatarModule} from 'primeng/avatar';
+import { DockModule } from 'primeng/dock';
+import { MegaMenuModule } from 'primeng/megamenu';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +32,13 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
+    ButtonModule,
+    SidebarModule,
+    BrowserAnimationsModule,
+    SplitterModule,
+    AvatarModule,
+    MegaMenuModule
   ],
   providers: [
     provideClientHydration()
