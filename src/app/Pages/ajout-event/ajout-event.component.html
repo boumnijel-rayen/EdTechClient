@@ -1,1 +1,34 @@
 <p>ajout-event works!</p>
+
+<form [formGroup]="evenementForm" (ngSubmit)="onSubmit()">
+  <div class="p-fluid">
+    <div class="p-field">
+      <label for="nom">Nom</label>
+      <input id="nom" type="text" pInputText formControlName="nom" />
+      <div *ngIf="evenementForm.controls['nom'].invalid && evenementForm.controls['nom'].touched" class="p-error">
+        Nom is required.
+      </div>
+    </div>
+
+    <div class="p-field">
+      <label for="description">Description</label>
+      <input id="description" type="text" pInputText formControlName="description" />
+      <div *ngIf="evenementForm.controls['description'].invalid && evenementForm.controls['description'].touched" class="p-error">
+        Description is required.
+      </div>
+    </div>
+
+    <div class="p-field">
+      <label for="date">Date</label>
+      <p-calendar id="date" formControlName="date" dateFormat="dd/mm/yy"></p-calendar>
+      <div *ngIf="evenementForm.controls['date'].invalid && evenementForm.controls['date'].touched" class="p-error">
+        Date is required.
+      </div>
+    </div>
+
+    <div class="p-field">
+      <button pButton type="submit" label="Submit" [disabled]="evenementForm.invalid"></button>
+      <button pButton type="button" label="Reset" class="p-button-secondary" (click)="onReset()"></button>
+    </div>
+  </div>
+</form>

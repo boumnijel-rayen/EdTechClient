@@ -15,8 +15,10 @@ import { SidebarModule } from 'primeng/sidebar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SplitterModule } from 'primeng/splitter';
 import {Avatar, AvatarModule} from 'primeng/avatar';
-import { DockModule } from 'primeng/dock';
 import { MegaMenuModule } from 'primeng/megamenu';
+import { CalendarModule } from 'primeng/calendar';
+import { InputTextModule } from 'primeng/inputtext';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -38,7 +40,13 @@ import { MegaMenuModule } from 'primeng/megamenu';
     BrowserAnimationsModule,
     SplitterModule,
     AvatarModule,
-    MegaMenuModule
+    MegaMenuModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,  // Required for some PrimeNG components
+    InputTextModule,
+    CalendarModule,
+    ButtonModule
   ],
   providers: [
     provideClientHydration()
