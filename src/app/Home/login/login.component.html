@@ -1,1 +1,26 @@
-<p>login works!</p>
+<div class="component">
+    <a class="accueil" routerLink="/"><i class="bi bi-arrow-left"></i></a>
+    <div class="center">
+        <i class="bi bi-person-circle"></i>
+        <h2>Connexion</h2>
+        <form [formGroup]="myForm" (submit)="connect()">
+            <div class="form">
+                <div class="txt">
+                    <input type="text" formControlName="email" name="email" required>
+                    <span></span>
+                    <label>Email</label>
+                </div>
+                <div class="error" *ngIf="myForm.get('email').touched && myForm.get('email').hasError('required')">email required</div>
+                <div class="error" *ngIf="myForm.get('email').touched && myForm.get('email').hasError('email')">email invalid</div>
+                <div class="txt">
+                    <input type="password" formControlName="password" name="mdp" required>
+                    <span></span>
+                    <label>Mot de passe</label>
+                </div>
+                <div class="error" *ngIf="myForm.get('password').touched && myForm.get('password').hasError('required')">password required</div>
+            </div>
+            <div class="erreur" *ngIf="invalidLogin">Authentification invalide</div>        
+            <input class="btnn" type="submit" [disabled]="myForm.invalid" value="se connecter">
+        </form>
+    </div>
+</div>  
