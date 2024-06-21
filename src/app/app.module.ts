@@ -19,6 +19,7 @@ import { MegaMenuModule } from 'primeng/megamenu';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,  // Required for some PrimeNG components
     InputTextModule,
     CalendarModule,
-    ButtonModule
+    ButtonModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()
