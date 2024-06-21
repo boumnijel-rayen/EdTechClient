@@ -1,0 +1,107 @@
+.sidebar{
+    position: fixed;
+    width: 20%;
+    height: 100%;
+    left: 0;
+    background-color: rgb(32, 32, 32);
+    padding: 20px;
+}
+
+.logo{
+    text-align: center;
+}
+
+.logo img{
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+}
+
+.logo h3{
+    margin-top: 10px;
+    color: white;
+}
+
+.menu{
+    list-style-type: none;
+    color: rgb(13, 37, 255);
+    margin-top: 140px;
+    padding: 0;
+}
+
+.menu li{
+    margin: 10px 0;
+    background-color: rgba(255, 255, 255, 0.979);
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 6px;
+    border-radius: 30px;
+    position: relative;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.menu li:hover{
+    background: linear-gradient(120deg,#5a2ff5, #58e6ff);
+    color: white;
+}
+
+.menu li:first-child{
+    background: linear-gradient(120deg,#5a2ff5, #58e6ff);
+    color: white;
+}
+
+.menu li i{
+    position: absolute;
+    left: 10px;
+}
+
+.out{
+    text-align: center;
+    color: rgb(252, 39, 39);
+    background-color: rgba(255, 255, 255, 0.979);
+    cursor: pointer;
+    width: 60%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 40px;
+    padding: 8px 12px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.profile{
+    background-color: white;
+    border-radius: 25px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 30px;
+    width: 160px;
+    height: 65px;
+    padding: 10px;
+    box-shadow: 1px 1px 5px #dbdbdb9c;
+}
+
+.profile h3{
+    font-size: 18px;
+    color: #5a2ff5;
+    font-weight: 800;
+    text-align: center;
+}
+
+.profile p{
+    font-size: 14px;
+    margin-top: -4px;
+    text-align: center;
+}
+
+.container{
+    width: 80%;
+    position: absolute;
+    right: 0;
+}
