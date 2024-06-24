@@ -18,8 +18,9 @@ import {Avatar, AvatarModule} from 'primeng/avatar';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule, withFetch } from '@angular/common/http';
+import { AuthInterceptor } from './aut.interceptor';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     MegaMenuModule,
     BrowserModule,
     ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,  // Required for some PrimeNG components
     InputTextModule,
     CalendarModule,
@@ -51,7 +53,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    provideClientHydration()
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

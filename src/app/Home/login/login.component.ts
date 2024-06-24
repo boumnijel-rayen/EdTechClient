@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit{
   response : any;
   resEmail : any;
   invalidLogin :any
-  constructor(private builder : FormBuilder, private router : Router, private auth : AuthServiceService) { 
+  constructor(private builder : FormBuilder, private router : Router, private auth : AuthServiceService) {
     this.myForm = this.builder.group({
       email : ['', [Validators.required, Validators.email]],
       password : ['', Validators.required]
@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit{
         console.log(this.response);
         localStorage.setItem('token', this.response.token);
         this.invalidLogin = false;
+        this.router.navigate(['/app']);
       },
       (error) => {
         console.log(error);

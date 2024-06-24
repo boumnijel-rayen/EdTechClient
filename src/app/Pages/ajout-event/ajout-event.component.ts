@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Evenement } from '../../Models/Evenement';
+import { EventServiceService } from '../../Services/event-service.service';
+import { AuthServiceService } from '../../Services/auth-service.service';
 
 @Component({
   selector: 'app-ajout-event',
@@ -10,7 +13,7 @@ export class AjoutEventComponent implements OnInit {
 
   evenementForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private eventService : EventServiceService, private auth : AuthServiceService) {
     // Initialize the form group with default values and validators
     this.evenementForm = this.fb.group({
       id: [{ value: 0, disabled: true }], // ID is typically not editable
@@ -26,6 +29,16 @@ export class AjoutEventComponent implements OnInit {
   onSubmit() {
     if (this.evenementForm.valid) {
       console.log(this.evenementForm.value);
+      let event = {
+        nom : "test",
+        description: "test"
+      }
+
+
+      var token = localStorage.getItem("TOKEN");
+      console.log(token);
+      this.eventService.ajouterEvent(event,token)
+      // this.eventService.ajouterEvent()
       // Handle form submission, e.g., send to the server
     }
   }
@@ -34,4 +47,9 @@ export class AjoutEventComponent implements OnInit {
   onReset() {
     this.evenementForm.reset();
   }
+
+
+
+  evenement: Evenement = new Evenement();
+
 }

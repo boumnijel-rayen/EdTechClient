@@ -3,7 +3,7 @@
     width: 20%;
     height: 100%;
     left: 0;
-    background-color: rgb(32, 32, 32);
+    background-color: rgb(61, 56, 56);
     padding: 20px;
 }
 
@@ -24,7 +24,7 @@
 
 .menu{
     list-style-type: none;
-    color: rgb(13, 37, 255);
+    color: rgb(2, 30, 9);
     margin-top: 140px;
     padding: 0;
 }
@@ -44,12 +44,12 @@
 }
 
 .menu li:hover{
-    background: linear-gradient(120deg,#5a2ff5, #58e6ff);
+    background: linear-gradient(120deg,#00f24d, #58e6ff);
     color: white;
 }
 
 .menu li:first-child{
-    background: linear-gradient(120deg,#5a2ff5, #58e6ff);
+   background: linear-gradient(120deg,#00f24d, #58e6ff);
     color: white;
 }
 
@@ -89,7 +89,7 @@
 
 .profile h3{
     font-size: 18px;
-    color: #5a2ff5;
+    color: #7bf52f;
     font-weight: 800;
     text-align: center;
 }
