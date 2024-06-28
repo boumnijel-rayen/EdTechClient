@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from '../../Services/auth-service.service';
+import { LISTBOX_VALUE_ACCESSOR } from 'primeng/listbox';
 
 @Component({
   selector: 'app-login',
@@ -29,8 +30,9 @@ export class LoginComponent implements OnInit{
       (data) => {
         this.response = data;
         console.log(this.response);
-        localStorage.setItem('token', this.response.token);
+        this.auth.setToken(this.response.token)
         this.invalidLogin = false;
+        this.router.navigate(['/app/gestion-users']);
       },
       (error) => {
         console.log(error);

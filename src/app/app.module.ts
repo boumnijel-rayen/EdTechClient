@@ -20,6 +20,8 @@ import { CalendarModule } from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ListEventComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    GestionUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    provideClientHydration()
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

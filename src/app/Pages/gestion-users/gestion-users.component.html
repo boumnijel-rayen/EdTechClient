@@ -1,0 +1,172 @@
+<!-- <div class="component">
+    <p class="title"><span>pages</span> / Produits</p>
+    <form [formGroup]="myForm2">
+        <div class="barre-rech">
+            <input type="text" formControlName="mot" placeholder="Rechercher un produit" class="rech">
+            <button class="btn-rech" (click)="chercherParMot()"><i class="bi bi-search"></i></button>
+            <button routerLink="/user/addProduct" class="ajoute btn btn-success"><i class="bi bi-plus-lg"></i></button>
+        </div>
+    </form>
+    <div class="products">
+        <table>
+            <thead>
+                <tr>
+                    <th>libelle</th>
+                    <th>description</th>
+                    <th>date ajoute</th>
+                    <th>prix DT</th>
+                    <th>prix liv DT</th>
+                    <th>laboratoire</th>
+                    <th>catégorie</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let produit of produits">
+                    <td>{{produit.lib_p}}</td>
+                    <td class="desc">{{produit.description}}</td>
+                    <td>{{produit.date_ajout}}</td>
+                    <td>{{produit.prix_p}}</td>
+                    <td>{{produit.prix_liv}}</td>
+                    <td>{{produit.laboratoire.lib_lab}}</td>
+                    <td>{{produit.categorie.lib_cat}}</td>
+                    <td>
+                        <button type="button" (click)="supprimer(produit.id_p)" class="btn btn-danger">Supprimer</button>
+                        <button type="button" (click)="getProduct(produit.id_p,produit.lib_p,produit.description,produit.date_ajout,produit.prix_p,produit.prix_liv)" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary">Modifier</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->
+
+<!-- Modal -->
+<!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Modifier Produit</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="myForm">
+            <div class="line">
+                <div class="txt-box">
+                    <label for="libelle">Libelle</label>
+                    <input type="text" formControlName="libelle" [(ngModel)]="libelle" id="libelle" name="libelle" placeholder="Libelle">
+                </div>
+            </div>
+            <div class="line">
+                <div class="txt-box">
+                    <label for="description">Description</label>
+                    <textarea type="text" formControlName="description" [(ngModel)]="description" id="description" cols="40" rows="6" name="description" placeholder="Description"></textarea>
+                </div>
+            </div>
+            <div class="line">
+                <div class="txt-box">
+                    <label for="prix">Prix</label>
+                    <input type="number" id="prix" formControlName="prix" [(ngModel)]="prix" name="prix" placeholder="Prix">
+                </div>
+                <div class="txt-box">
+                    <label for="prix-liv">Prix Livraison</label>
+                    <input type="number" id="prix-liv" formControlName="prix_liv" [(ngModel)]="prix_liv" name="prix-liv" placeholder="Prix Livraison">
+                </div>
+            </div>
+            <div class="line">
+                <div class="txt-box">
+                    <label for="date">Date</label>
+                    <input type="datetime-local" formControlName="date" [(ngModel)]="date" id="date" name="date" placeholder="Date">
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="modifier(id_p)">Modifier</button>
+        </div>
+      </div>
+    </div>
+</div> -->
+
+
+<div class="component">
+    <p class="title" (click)="test()"><span>pages</span> / Produits</p>
+    <form >
+        <div class="barre-rech">
+            <input type="text" placeholder="Rechercher un produit" class="rech">
+            <button class="btn-rech" ><i class="bi bi-search"></i></button>
+            <button class="ajoute btn btn-success"><i class="bi bi-plus-lg"></i></button>
+        </div>
+    </form>
+    <div class="products">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{user.nom}}</td>
+                    <td>{{user.prenom}}</td>
+                    <td>{{user.email}}</td>
+                    <td>
+                        <button type="button" class="btn btn-danger">Supprimer</button>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-primary">Modifier</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Modifier Produit</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="line">
+                <div class="txt-box">
+                    <label for="libelle">Libelle</label>
+                    <input type="text" id="libelle" name="libelle" placeholder="Libelle">
+                </div>
+            </div>
+            <div class="line">
+                <div class="txt-box">
+                    <label for="description">Description</label>
+                    <textarea type="text" id="description" cols="40" rows="6" name="description" placeholder="Description"></textarea>
+                </div>
+            </div>
+            <div class="line">
+                <div class="txt-box">
+                    <label for="prix">Prix</label>
+                    <input type="number" id="prix" name="prix" placeholder="Prix">
+                </div>
+                <div class="txt-box">
+                    <label for="prix-liv">Prix Livraison</label>
+                    <input type="number" id="prix-liv" name="prix-liv" placeholder="Prix Livraison">
+                </div>
+            </div>
+            <div class="line">
+                <div class="txt-box">
+                    <label for="date">Date</label>
+                    <input type="datetime-local" name="date" placeholder="Date">
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Modifier</button>
+        </div>
+      </div>
+    </div>
+</div>

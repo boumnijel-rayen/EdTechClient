@@ -6,12 +6,14 @@ import { AjoutEventComponent } from './Pages/ajout-event/ajout-event.component';
 import { LoginComponent } from './Home/login/login.component';
 import { RegisterComponent } from './Home/register/register.component';
 import { HomeComponent } from './Home/home/home.component';
+import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.component';
 
 const routes: Routes = [
   {path: 'app', redirectTo: 'app/list-event'},
   {path: 'app', component: SidebarComponent, children: [
     {path: 'list-event', component: ListEventComponent},
-    {path: 'ajout-event', component: AjoutEventComponent}
+    {path: 'ajout-event', component: AjoutEventComponent},
+    {path: 'gestion-users', component: GestionUsersComponent}
   ]
   },
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
