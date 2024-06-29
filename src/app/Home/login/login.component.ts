@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit{
         console.log(this.response);
         localStorage.setItem('token', this.response.token);
         this.invalidLogin = false;
-        this.router.navigate(['/app']);
+        this.router.navigate(['/app/ajout-event']);
       },
       (error) => {
         console.log(error);

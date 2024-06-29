@@ -20,7 +20,9 @@ import { CalendarModule } from 'primeng/calendar';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule, withFetch } from '@angular/common/http';
-import { AuthInterceptor } from './aut.interceptor';
+import { CardModule } from 'primeng/card';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { DialogModule } from 'primeng/dialog';
 
 
 @NgModule({
@@ -50,14 +52,18 @@ import { AuthInterceptor } from './aut.interceptor';
     InputTextModule,
     CalendarModule,
     ButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    CardModule,
+    ScrollPanelModule,
+    DialogModule
   ],
   providers: [
-    {
+/*     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    } */
+      provideClientHydration(),
   ],
   bootstrap: [AppComponent]
 })

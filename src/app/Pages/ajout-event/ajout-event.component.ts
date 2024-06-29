@@ -31,13 +31,25 @@ export class AjoutEventComponent implements OnInit {
       console.log(this.evenementForm.value);
       let event = {
         nom : "test",
-        description: "test"
+        description: "test",
+        date : null
       }
+      this.auth.signIn("medazizbentourkia@gmail.com", "123456").subscribe((data : any) => {
+        console.log(data.token)
+        localStorage.setItem('token',data.token)
+      })
+      .add(() => {
+        this.eventService.ajouterEvent(event,token).subscribe((data : any) => {
+          console.log(data)
+        })
+      })
 
 
       var token = localStorage.getItem("TOKEN");
       console.log(token);
-      this.eventService.ajouterEvent(event,token)
+      this.eventService.ajouterEvent(event,token).subscribe((data : any) => {
+        console.log(data)
+      })
       // this.eventService.ajouterEvent()
       // Handle form submission, e.g., send to the server
     }
