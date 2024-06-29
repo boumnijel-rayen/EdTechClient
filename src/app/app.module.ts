@@ -23,6 +23,8 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule, withFetch } from '@ang
 import { CardModule } from 'primeng/card';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { DialogModule } from 'primeng/dialog';
+import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { DialogModule } from 'primeng/dialog';
     ListEventComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    GestionUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -58,12 +61,7 @@ import { DialogModule } from 'primeng/dialog';
     DialogModule
   ],
   providers: [
-/*     {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    } */
-      provideClientHydration(),
+    CookieService
   ],
   bootstrap: [AppComponent]
 })
