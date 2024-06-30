@@ -7,6 +7,7 @@ import { LoginComponent } from './Home/login/login.component';
 import { RegisterComponent } from './Home/register/register.component';
 import { HomeComponent } from './Home/home/home.component';
 import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.component';
+import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.component';
 
 const routes: Routes = [
   {path: 'app', redirectTo: 'app/list-event'},
@@ -18,7 +19,8 @@ const routes: Routes = [
   },
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
   {path: 'register', component: RegisterComponent, pathMatch: 'full'},
-  {path: '', component: HomeComponent, pathMatch: 'full'}
+  {path: '', component: HomeComponent, pathMatch: 'full'},
+  {path: 'confirm', component: ConfirmAccountComponent, pathMatch: 'full'}
 ];
 
 @NgModule({

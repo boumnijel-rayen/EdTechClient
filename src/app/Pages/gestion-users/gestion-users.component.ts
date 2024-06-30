@@ -16,6 +16,7 @@ export class GestionUsersComponent implements OnInit{
   ngOnInit(): void {
     this.auth.getAllUsers(this.auth.getToken()).subscribe((data : any) => {
       this.users = data
+      console.log(this.users)
     })
   }
 

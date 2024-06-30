@@ -3,6 +3,8 @@ import { Sidebar, SidebarModule } from 'primeng/sidebar';
 import {ButtonModule}  from 'primeng/button';
 import {SplitterModule} from 'primeng/splitter'
 import { MegaMenuItem } from 'primeng/api';
+import { AuthServiceService } from '../Services/auth-service.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -12,6 +14,8 @@ export class SidebarComponent {
   @ViewChild('sidebarRef') sidebarRef!: Sidebar;
 
   items: MegaMenuItem[] | undefined;
+
+  constructor(private auth : AuthServiceService, private router : Router){}
 
   ngOnInit() {
       this.items = [
@@ -66,5 +70,10 @@ export class SidebarComponent {
 
   sidebarVisible: boolean = false;
 
+  logout(){
+    this.auth.deleteEmail();
+    this.auth.deleteToken();
+    this.router.navigate(['/']);
+  }
 
 }

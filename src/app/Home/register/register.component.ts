@@ -11,6 +11,7 @@ import { AuthServiceService } from '../../Services/auth-service.service';
 export class RegisterComponent implements OnInit{
 
   myForm : any;
+  EmailExist :any
   constructor(private formBuilder : FormBuilder, private router : Router, private authService : AuthServiceService) { 
     this.myForm = this.formBuilder.group({
       nom : ['', Validators.required],
@@ -80,7 +81,7 @@ export class RegisterComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  add(){
+  register(){
     let user = {
       nom : this.myForm.value.nom,
       prenom : this.myForm.value.prenom,
@@ -90,9 +91,14 @@ export class RegisterComponent implements OnInit{
 
     this.authService.signUp(user).subscribe(
       (data:any) => {
-        console.log(data);
-        localStorage.setItem('token', data.token);
-        // this.router.navigate(['/login']);
+        this.EmailExist = false
+        this.authService.setEmail(user.email)
+        this.router.navigate(['/confirm']);
+      },
+      (error : any) => {
+        if (error.error.message == 'email_existe'){
+          this.EmailExist = true
+        }
       }
     );
   }
