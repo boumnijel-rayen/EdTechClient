@@ -7,17 +7,16 @@
                 <section id="codeForm">
                     <h2>Un code d'activation a été envoyé par mail</h2>
                     <div id="code" #codeArea class="shrinkable">
-                        <input #codeInput type="text"/>
-                        <input #codeInput type="text"/>
-                        <input #codeInput type="text"/>
-                        <input #codeInput type="text"/>
-                        <input #codeInput type="text"/>
-                        <input #codeInput type="text"/>
+                        <input #codeInput maxlength="1" type="text"/>
+                        <input #codeInput maxlength="1" type="text"/>
+                        <input #codeInput maxlength="1" type="text"/>
+                        <input #codeInput maxlength="1" type="text"/>
+                        <input #codeInput maxlength="1" type="text"/>
+                        <input #codeInput maxlength="1" type="text"/>
                     </div>
                     <div id="feedback" #feedback>
-                        <!-- <img class="growable" #feedbackImage id="feedbackImage" alt="feedback"> -->
                         <img class="errorimg" *ngIf="test" src="https://cdn-icons-png.flaticon.com/512/463/463612.png" alt="feedback">
-                        <input class="growable" #sendButton id="sendButton" (click)="restoreInputs()" type="button" value="Send code again"/>
+                        <input class="growable" #sendButton id="sendButton" (click)="restoreInputs()" type="button" value="Réessayer"/>
                     </div>
                 </section>
             </div>
