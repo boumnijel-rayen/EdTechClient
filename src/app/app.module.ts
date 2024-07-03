@@ -25,6 +25,7 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { DialogModule } from 'primeng/dialog';
 import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.component';
 import { CookieService } from 'ngx-cookie-service';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { CookieService } from 'ngx-cookie-service';
     HttpClientModule,
     CardModule,
     ScrollPanelModule,
-    DialogModule
+    DialogModule,
+    MultiSelectModule
   ],
   providers: [
     CookieService

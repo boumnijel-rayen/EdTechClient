@@ -10,18 +10,19 @@ import { Injectable } from '@angular/core';
 export class EventServiceService {
   constructor(private http : HttpClient, private auth : AuthServiceService) { }
 
-  ajouterEvent(event : any, token : any){
-/*     const headers = new HttpHeaders({
-      'Authorization': Bearer ${token},
-    }); */
+  ajouterEvent(event : any){
+/*
     const headers = new HttpHeaders({
       'Authorization' : `Bearer ${token}`,
-    });
+    });*/
+    const headers = this.auth.sendToken();
+    console.log(this.auth.getToken())
     return this.http.post("http://localhost:8089/event/save",event,{headers});
   }
-  getEvenements(event : any) : Observable<Evenement[]>{
-    console.log();
-    return this.http.get<Evenement[]>("http://localhost:8089/event/getall");
+  getEvenements() : Observable<Evenement[]>{
+    const headers = this.auth.sendToken();
+    console.log(this.auth.getToken())
+    return this.http.get<Evenement[]>("http://localhost:8089/event/getall",{headers});
   }
 
 }

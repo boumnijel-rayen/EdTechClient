@@ -47,4 +47,10 @@ export class AuthServiceService {
   deleteToken(): void {
     this.cookieService.delete('auth_token', '/');
   }
+  sendToken():any{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.getToken()}`,
+    });
+    return headers;
+  }
 }

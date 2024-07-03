@@ -3,7 +3,7 @@
   padding: 5%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
-  gap: 16px; /* Adjust the gap between cards */
+  gap: 15px; /* Adjust the gap between cards */
   overflow-y: auto;
 }
 .card-content {
@@ -48,4 +48,10 @@ p-card p {
 
 .mt-3 {
   margin-top: 1rem; /* Adds space above the buttons */
+}
+
+.globalButtons{
+  padding-top: 10px;
+  justify-content: flex-end;
+  display: flex;
 }

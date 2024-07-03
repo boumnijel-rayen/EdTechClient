@@ -14,7 +14,7 @@
       <label for="description">Description</label>
       <input id="description" type="text" pInputText formControlName="description" />
       <div *ngIf="evenementForm.controls['description'].invalid && evenementForm.controls['description'].touched" class="p-error">
-        Description is required.
+        Description est obligatoire.
       </div>
     </div>
     <br>
@@ -22,9 +22,22 @@
       <label for="date">Date</label>
       <p-calendar id="date" formControlName="date" dateFormat="dd/mm/yy"></p-calendar>
       <div *ngIf="evenementForm.controls['date'].invalid && evenementForm.controls['date'].touched" class="p-error">
-        Date is required.
+        Date est obligatoire.
       </div>
     </div>
+    <div class="p-field">
+      <label for="organisateurs">Equipe organisation</label>
+          <p-multiSelect
+              id="organisateurs"
+              [options]="utilisateurs"
+              formControlName="organisateurs"
+              optionLabel="email"
+              placeholder="Choisir organisateurs"
+              scrollHeight="200px"/>
+  </div>
+  <div *ngIf="evenementForm.controls['organisateurs'].invalid && evenementForm.controls['organisateurs'].touched" class="p-error">
+    Choisir au moins un organisateur.
+  </div>
     <br>
     <div class="p-field" style="margin: 10px;">
       <button pButton type="submit" label="Submit" [disabled]="evenementForm.invalid" style="width: 48%;margin-right: 4%;"></button>
