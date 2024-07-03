@@ -1,12 +1,12 @@
 <div class="component">
     <div class="back">
-        <i class="bi bi-arrow-left" routerLink="/"></i>
+        <i class="bi bi-arrow-left-short" routerLink="/"></i>
     </div>
     <div class="container">
         <div class="row">
             <div class="col-7 coll-1">
                 <div class="title">Register</div>
-                <form [formGroup]="myForm" (ngSubmit)="add()">
+                <form [formGroup]="myForm" (ngSubmit)="register()">
                     <div class="line">
                         <div>
                             <div class="input-box">
@@ -51,6 +51,7 @@
                             <div class="error" *ngIf="myForm.get('confirmPassword').touched && myForm.hasError('passworConfirmationControlNotValid') && !myForm.get('confirmPassword').hasError('required')">confirmation invalid</div>
                         </div>
                     </div>
+                    <div class="erreur" *ngIf="EmailExist">Email existe déja</div>  
                     <button type="submit" [disabled]="myForm.invalid">Sign-Up</button>
                 </form>
             </div>

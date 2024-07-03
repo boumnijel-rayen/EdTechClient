@@ -25,6 +25,7 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { DialogModule } from 'primeng/dialog';
 import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.component';
 import { CookieService } from 'ngx-cookie-service';
+import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 
 
@@ -37,7 +38,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    GestionUsersComponent
+    GestionUsersComponent,
+    ConfirmAccountComponent
   ],
   imports: [
     BrowserModule,

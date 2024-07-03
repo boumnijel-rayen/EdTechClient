@@ -31,12 +31,20 @@ export class LoginComponent implements OnInit{
         this.response = data;
         console.log(this.response);
         this.auth.setToken(this.response.token)
+        this.auth.setEmail(this.myForm.value.email);
         this.invalidLogin = false;
         this.router.navigate(['/app/gestion-users']);
       },
-      (error) => {
-        console.log(error);
-        this.invalidLogin = true;
+      (error : any) => {
+        if (error.status == 423){
+          this.invalidLogin = false;
+          this.auth.setEmail(this.myForm.value.email)
+          this.router.navigate(['/confirm']);
+        }else{
+          console.log(error);
+          this.invalidLogin = true;
+        }
+        
       }
     );
   }

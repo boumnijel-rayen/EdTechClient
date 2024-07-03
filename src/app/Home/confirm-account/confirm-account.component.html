@@ -1,0 +1,25 @@
+<div class="component">
+    <a class="accueil" routerLink="/"><i class="bi bi-arrow-left"></i></a>
+    <div class="center">
+        <i class="bi bi-person-circle"></i>
+        <form>
+            <div class="form">
+                <section id="codeForm">
+                    <h2>Un code d'activation a été envoyé par mail</h2>
+                    <div id="code" #codeArea class="shrinkable">
+                        <input #codeInput maxlength="1" type="text"/>
+                        <input #codeInput maxlength="1" type="text"/>
+                        <input #codeInput maxlength="1" type="text"/>
+                        <input #codeInput maxlength="1" type="text"/>
+                        <input #codeInput maxlength="1" type="text"/>
+                        <input #codeInput maxlength="1" type="text"/>
+                    </div>
+                    <div id="feedback" #feedback>
+                        <img class="errorimg" *ngIf="test" src="https://cdn-icons-png.flaticon.com/512/463/463612.png" alt="feedback">
+                        <input class="growable" #sendButton id="sendButton" (click)="restoreInputs()" type="button" value="Réessayer"/>
+                    </div>
+                </section>
+            </div>
+        </form>
+    </div>
+</div>

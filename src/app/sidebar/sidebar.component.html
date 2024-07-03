@@ -8,14 +8,11 @@
         <p>username</p>
     </div>
     <ul class="menu">
-        <li routerLink="/user"><i class="bi bi-cart-dash-fill"></i>Espace 1</li>
-        <li routerLink="/user/suppliers"><i class="bi bi-people-fill"></i>Espace 1</li>
-        <li routerLink="/user/addProduct"><i class="bi bi-bag-check-fill"></i>Espace 1</li>
-        <li routerLink="/user/addSupplier"><i class="bi bi-person-fill-add"></i>Espace 1</li>
-        <li routerLink="/user/commander"><i class="bi bi-window-plus"></i>Espace 1</li>
-        <li routerLink="/user/factures"><i class="bi bi-file-text"></i>Espace 1</li>
+        <li routerLink="/app/gestion-users"><i class="bi bi-cart-dash-fill"></i>Utilisateurs</li>
+        <li routerLink="/app/list-event"><i class="bi bi-people-fill"></i>Evenements</li>
+        <li routerLink="/app/ajout-event"><i class="bi bi-bag-check-fill"></i>Ajouter evenement</li>
     </ul>
-    <div class="out">
+    <div class="out" (click)="logout()">
         <i class="bi bi-door-open-fill"></i>
         Log out
     </div>

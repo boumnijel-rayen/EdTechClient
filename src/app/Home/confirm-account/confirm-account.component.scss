@@ -1,0 +1,150 @@
+.component{
+    background: linear-gradient(120deg,#5a2ff5, #58e6ff);
+    height: 100vh;
+}
+
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+}
+
+.center i{
+    font-size: 80px;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: -40px;
+}
+
+.center h2{
+    text-align: center;
+    padding-top: 30px;
+}
+
+.center form{
+    padding: 0 20px;
+}
+
+  
+form .txt{
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 20px 0;
+}
+
+.form{
+    margin-bottom: 30px;
+}
+
+
+  #codeForm {
+      text-align: center;
+      margin: 0 auto;
+      max-width: 1000px;
+      font-size: 20px;
+  }
+  
+  #codeForm h2 {
+      font-weight: 300;
+   
+  }
+  
+  .shrinkable {
+    transition: transform 100ms linear;
+    border:1px solid grey;
+    border-radius: 10px;
+    padding: .5rem;
+    margin:0 1rem;
+  }
+  
+  .shrinkable.shrink {
+      transform: scale(0.9);
+  }
+  
+  #code {
+      transition: transform 100ms linear;
+  }
+  
+  #code input {
+      font-size: 50px;
+      width: 70px;
+      height: 70px;
+      text-align: center;
+      border: 1px solid #aaa;
+      border-radius: 10px;
+      margin: 8px;
+  }
+  
+  #code input:active,
+  #code input:focus {
+      outline: none;
+      border: 1px solid gray;
+  }
+  
+  #code input.error {
+      border: 1px solid red;
+  }
+  
+  #code input:disabled {
+      color: #222;
+      background-color: #FFFFFF;
+  }
+  
+  #feedback {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 0;
+      overflow: hidden;
+  }
+  
+  #feedbackImage {
+      width: 60px;
+      padding: 30px;
+  }
+  
+  .growable {
+      transform: scale(0.5);
+      opacity: 0;
+      transition: transform 350ms, opacity 350ms;
+      transition-timing-function: cubic-bezier(0.46, 0.03, 0, 1.58);
+  }
+  
+  .growable.grow {
+      opacity: 1;
+      transform: scale(1);
+  }
+  
+  input[type="button"] {
+      outline: none;
+      background-color: transparent;
+      font-family: inherit;
+      text-transform: uppercase;
+      cursor: pointer;
+  }
+  
+  #sendButton {
+   font-size: 1.3rem;
+   border:1px solid grey;
+   border-radius: 5px;
+   padding: .5rem 1rem;
+   font-weight: 300;
+  }
+  
+  #sendButton:hover {
+      background-color: rgb(128,128,128, 0.5);
+  }
+
+
+  .errorimg{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    width: 70px;
+    height: 70px;
+  }
