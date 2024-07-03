@@ -1,9 +1,8 @@
 import { DatePipe } from '@angular/common';
 import { AuthServiceService } from '../../Services/auth-service.service';
 import { EventServiceService } from '../../Services/event-service.service';
-import { Evenement } from './../../Models/Evenement';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-
+import { Evenement } from '../../Models/Evenement';
 @Component({
   selector: 'app-list-event',
   templateUrl: './list-event.component.html',

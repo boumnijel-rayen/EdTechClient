@@ -1,4 +1,4 @@
-import { Evenement } from '../models/Evenement';
+import { Evenement } from '../Models/Evenement';
 import { Observable } from 'rxjs';
 import { AuthServiceService } from './auth-service.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
