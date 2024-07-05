@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from '../../Services/auth-service.service';
 import { LISTBOX_VALUE_ACCESSOR } from 'primeng/listbox';
+import { Ripple } from 'primeng/ripple';
+import { UserService } from '../../Services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,8 @@ export class LoginComponent implements OnInit{
   response : any;
   resEmail : any;
   invalidLogin :any
-  constructor(private builder : FormBuilder, private router : Router, private auth : AuthServiceService) {
+  userConn:any
+  constructor(private builder : FormBuilder, private router : Router, private auth : AuthServiceService, private user : UserService) {
     this.myForm = this.builder.group({
       email : ['', [Validators.required, Validators.email]],
       password : ['', Validators.required]
@@ -29,7 +32,6 @@ export class LoginComponent implements OnInit{
     this.auth.signIn(this.myForm.value.email, this.myForm.value.password).subscribe(
       (data) => {
         this.response = data;
-        console.log(this.response);
         this.auth.setToken(this.response.token)
         this.auth.setEmail(this.myForm.value.email);
         this.invalidLogin = false;
@@ -43,9 +45,19 @@ export class LoginComponent implements OnInit{
         }else{
           console.log(error);
           this.invalidLogin = true;
+          return
         }
         
       }
-    );
+    ).add(() => {
+      this.user.GetUser(this.auth.getEmail(), this.auth.getToken()).subscribe((data : any) => {
+        this.userConn = data
+        const roles : string[] = [];
+        this.userConn.roles.forEach((element : string) => {
+          roles.push(element)
+        });
+        this.auth.setRoles(roles)
+    })
+    });
   }
 }
