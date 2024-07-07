@@ -1,20 +1,22 @@
-import { UserServiceService } from './../../Services/user-service.service';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Evenement } from '../../Models/Evenement';
+import { Utilisateur } from '../../Models/Utilisateur';
 import { EventServiceService } from '../../Services/event-service.service';
 import { AuthServiceService } from '../../Services/auth-service.service';
-import { Utilisateur } from '../../Models/Utilisateur';
 import { UploadEvent } from 'primeng/fileupload';
-import { HttpEvent, HttpEventType } from '@angular/common/http';
+import { UserServiceService } from '../../Services/user-service.service';
+import { Evenement } from '../../Models/Evenement';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-ajout-event',
-  templateUrl: './ajout-event.component.html',
-  styleUrl: './ajout-event.component.css'
+  selector: 'app-modif-event',
+  templateUrl: './modif-event.component.html',
+  styleUrl: './modif-event.component.scss'
 })
-export class AjoutEventComponent implements OnInit {
+export class ModifEventComponent {
   @Output() eventAdded = new EventEmitter<any>();
+  @Input() eventId: number | null = null;
   evenementForm: FormGroup;
   utilisateurs !: Utilisateur[];
   usersId: number[] = [];
@@ -22,10 +24,12 @@ export class AjoutEventComponent implements OnInit {
   image: any;
   imageError: string | null = null;
   messageService: any;
-  constructor(private fb: FormBuilder, private eventService : EventServiceService, private auth : AuthServiceService,private userService :UserServiceService) {
+  currentImage: any;
+  constructor(private fb: FormBuilder, private eventService : EventServiceService, private auth : AuthServiceService,private userService :UserServiceService, private activeRoute : ActivatedRoute, private router : Router) {
     // Initialize the form group with default values and validators
+
     this.evenementForm = this.fb.group({
-      id: [{ value: 0, disabled: true }], // ID is typically not editable
+      id: [],
       nom: ['', Validators.required],
       description: ['', Validators.required],
       date: [null, Validators.required],  // PrimeNG Calendar uses null for no date
@@ -40,15 +44,15 @@ export class AjoutEventComponent implements OnInit {
         console.log(this.utilisateurs)
       }
     );
+    this.loadEventData(this.eventId)
   }
-
-  ngOnInit(): void {}
 
   // Method to handle form submission
   onSubmit() {
     if (this.evenementForm.valid) {
       let organisateurs = this.evenementForm.controls['organisateurs'].value;
       let event : any ={
+        id : this.evenementForm.controls['id'].value,
         nom : this.evenementForm.controls['nom'].value,
          date : this.evenementForm.controls['date'].value,
          description: this.evenementForm.controls['description'].value,
@@ -56,7 +60,7 @@ export class AjoutEventComponent implements OnInit {
 
       };
       console.log(event)
-      this.eventService.ajouterEvent(event).subscribe((data : any) => {
+      this.eventService.modifierEvent(event).subscribe((data : any) => {
         this.idEvent = data.id;
       }).add(() => {
         if (this.idEvent) {
@@ -65,16 +69,16 @@ export class AjoutEventComponent implements OnInit {
             this.usersId.push(element.id)
           });
           console.log(this.usersId)
-          this.eventService.ajouteEquipeOrg(this.idEvent, this.usersId).subscribe((response: any) => {
+          this.eventService.modifierEquipeOrg(this.idEvent, this.usersId).subscribe((response: any) => {
             // Handle the response from ajouteEquipeOrg if needed
           });
         }
       })
 
-
-      //this.eventAdded.emit(event);
     }
     this.evenementForm.reset();
+    this.eventAdded.emit(event);
+    this.onReturn();
   }
 
   // Method to reset the form
@@ -82,22 +86,42 @@ export class AjoutEventComponent implements OnInit {
     this.evenementForm.reset();
   }
 
-
-  onImageUpload(event: HttpEvent<any>) {
-    if (event.type === HttpEventType.Response && event.body) {
-      const file = event.body;
-      if (file.size > 1000000) {
-        this.imageError = 'La taille de l\'image ne doit pas dépasser 1 Mo.';
-      } else {
-        this.imageError = null;
-        this.image = file;
-        this.evenementForm.patchValue({ image: this.image });
-      }
-    }
+  onReturn(){
+    this.router.navigate(['/app/list-event'])
   }
-  onUpload(event: UploadEvent) {
-    this.messageService.add({ severity: 'info', summary: 'Success', detail: 'File Uploaded with Basic Mode' });
+
+
+
+ngOnInit(): void {
+
+  this.loadEventData(this.activeRoute.snapshot.paramMap.get('id'));
 }
+
+loadEventData(idEvent : any) {
+  this.eventService.getEventById(idEvent).subscribe((event: Evenement) => {
+    console.log(event)
+    this.evenementForm.patchValue({
+      id: event.id,
+      nom: event.nom,
+      description: event.description,
+      date: new Date(event.date),
+    });
+  });
+  this.eventService.getEquipeOrgByEventId(idEvent).subscribe((orgs : any)=>{
+    console.log(orgs)
+    this.evenementForm.patchValue({
+      organisateurs : orgs
+    })
+  })
+}
+
+
+
+
+
+
+
+
 
 
 

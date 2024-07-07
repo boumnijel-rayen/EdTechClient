@@ -8,12 +8,14 @@ import { RegisterComponent } from './Home/register/register.component';
 import { HomeComponent } from './Home/home/home.component';
 import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.component';
 import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.component';
+import { ModifEventComponent } from './Pages/modif-event/modif-event.component';
 
 const routes: Routes = [
   {path: 'app', redirectTo: 'app/list-event'},
   {path: 'app', component: SidebarComponent, children: [
     {path: 'list-event', component: ListEventComponent},
     {path: 'ajout-event', component: AjoutEventComponent},
+    {path: 'modif-event/:id', component: ModifEventComponent},
     {path: 'gestion-users', component: GestionUsersComponent}
   ]
   },

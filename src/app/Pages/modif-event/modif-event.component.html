@@ -1,0 +1,51 @@
+<div class="wrapper">
+  <div  class="container">
+  <form [formGroup]="evenementForm" (ngSubmit)="onSubmit()">
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="nom">Nom</label>
+        <input id="nom" type="text" pInputText formControlName="nom" />
+        <div *ngIf="evenementForm.controls['nom'].invalid && evenementForm.controls['nom'].touched" class="p-error">
+          Nom de l'évenement est obligatoire.
+        </div>
+      </div>
+  <br>
+      <div class="p-field">
+        <label for="description">Description</label>
+        <input id="description" type="text" pInputText formControlName="description" />
+        <div *ngIf="evenementForm.controls['description'].invalid && evenementForm.controls['description'].touched" class="p-error">
+          Description est obligatoire.
+        </div>
+      </div>
+      <br>
+      <div class="p-field">
+        <label for="date">Date</label>
+        <p-calendar id="date" formControlName="date" dateFormat="dd/mm/yy"></p-calendar>
+        <div *ngIf="evenementForm.controls['date'].invalid && evenementForm.controls['date'].touched" class="p-error">
+          Date est obligatoire.
+        </div>
+      </div>
+      <br>
+      <div class="p-field">
+        <label for="organisateurs">Equipe organisation</label>
+            <p-multiSelect
+                id="organisateurs"
+                [options]="utilisateurs"
+                formControlName="organisateurs"
+                optionLabel="email"
+                placeholder="Choisir organisateurs"
+                scrollHeight="200px"/>
+    </div>
+    <div *ngIf="evenementForm.controls['organisateurs'].invalid && evenementForm.controls['organisateurs'].touched" class="p-error">
+      Choisir au moins un organisateur.
+    </div>
+      <br>
+      <div class="p-field" style="margin: 10px;">
+        <button pButton type="submit" label="Submit" [disabled]="evenementForm.invalid" style="width: 32%;margin-right: 2%;"></button>
+        <button pButton type="button" label="Reset" class="p-button-secondary" (click)="onReset()" style="width: 32%; margin-right:2%;"></button>
+        <button pButton type="button" label="Return" class="p-button-secondary" (click)="onReturn()" style="width: 32%; "></button>
+      </div>
+    </div>
+  </form>
+  </div>
+  </div>

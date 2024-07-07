@@ -23,23 +23,14 @@
   <p>{{ date }}</p>
   <p>{{ selectedCardContent }}</p>
   <div class="flex justify-content-end gap-2">
-    <p-button label="Modifier" severity="secondary"  />
+    <p-button label="Modifier" severity="secondary" (click)="goModif()"/>
     <p-button label="Delete" severity="danger"/>
   </div>
 </p-dialog>
 
 
 
-<p-dialog header="Ajout Evenement" [(visible)]="displayDialog" modal="true" [style]="{width: '50vw'}">
-  <img alt="Card" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" />
-  <h3>{{ titre }}</h3>
-  <p>{{ date }}</p>
-  <p>{{ selectedCardContent }}</p>
-  <div class="flex justify-content-end gap-2">
-    <p-button label="Modifier" severity="secondary"  />
-    <p-button label="Delete" severity="danger"/>
-  </div>
-</p-dialog>
+
 <p-dialog header="Ajout Evenement" [(visible)]="displayAjoutDialog" modal="true" [style]="{width: '50vw'}">
 <app-ajout-event (eventAdded)="onEventAdded($event)"></app-ajout-event>
 </p-dialog>

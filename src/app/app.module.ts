@@ -27,6 +27,8 @@ import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.compo
 import { CookieService } from 'ngx-cookie-service';
 import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.component';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { FileUploadModule } from 'primeng/fileupload';
+import { ModifEventComponent } from './Pages/modif-event/modif-event.component';
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     RegisterComponent,
     HomeComponent,
     GestionUsersComponent,
-    ConfirmAccountComponent
+    ConfirmAccountComponent,
+    ModifEventComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,8 @@ import { MultiSelectModule } from 'primeng/multiselect';
     CardModule,
     ScrollPanelModule,
     DialogModule,
-    MultiSelectModule
+    MultiSelectModule,
+    FileUploadModule
   ],
   providers: [
     CookieService
