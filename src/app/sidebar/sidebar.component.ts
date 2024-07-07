@@ -5,6 +5,7 @@ import {SplitterModule} from 'primeng/splitter'
 import { MegaMenuItem } from 'primeng/api';
 import { AuthServiceService } from '../Services/auth-service.service';
 import { Router } from '@angular/router';
+import { UserService } from '../Services/user.service';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -14,8 +15,10 @@ export class SidebarComponent {
   @ViewChild('sidebarRef') sidebarRef!: Sidebar;
 
   items: MegaMenuItem[] | undefined;
-
-  constructor(private auth : AuthServiceService, private router : Router){}
+  user : any
+  constructor(private auth : AuthServiceService, private router : Router){
+    console.log(this.auth.getRoles())
+  }
 
   ngOnInit() {
       this.items = [

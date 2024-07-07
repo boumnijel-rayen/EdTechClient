@@ -77,4 +77,25 @@ export class AuthServiceService {
   deleteEmail(): void {
     this.cookieService.delete('email_connected', '/');
   }
+
+  setRoles(roles: string[]): void {
+    const options = {
+      expires: 1, // 1 day expiration
+      secure: true,
+      sameSite: 'Strict' as 'Strict' | 'Lax' | 'None',
+      path: '/',
+      // HttpOnly is not directly supported by JavaScript as it's a flag that needs to be set server-side
+    };
+    const rolesString = JSON.stringify(roles);
+    this.cookieService.set('roles', rolesString, options);
+  }
+
+  getRoles(): string[] {
+    const rolesString = this.cookieService.get('roles');
+    return rolesString ? JSON.parse(rolesString) : [];
+  }
+
+  deleteRoles(): void {
+    this.cookieService.delete('roles', '/');
+  }
 }
