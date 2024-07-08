@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -10,7 +16,6 @@ import { LoginComponent } from './Home/login/login.component';
 import { RegisterComponent } from './Home/register/register.component';
 import { HomeComponent } from './Home/home/home.component';
 import { RouterModule } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SplitterModule } from 'primeng/splitter';
@@ -22,10 +27,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule, withFetch } from '@angular/common/http';
 import { CardModule } from 'primeng/card';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
-import { DialogModule } from 'primeng/dialog';
 import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.component';
+import { MatiereListComponent } from './matiere-list/matiere-list.component';
+import { AddMatiereDialogComponent } from './add-matiere-dialog/add-matiere-dialog.component';
+import { MatiereExamsComponent } from './matiere-exams/matiere-exams.component';
+import { ListeMatiereEtudiantComponent } from './liste-matiere-etudiant/liste-matiere-etudiant.component';
 
 
 @NgModule({
@@ -38,7 +46,11 @@ import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.
     RegisterComponent,
     HomeComponent,
     GestionUsersComponent,
-    ConfirmAccountComponent
+    ConfirmAccountComponent,
+    MatiereListComponent,
+    AddMatiereDialogComponent,
+    MatiereExamsComponent,
+    ListeMatiereEtudiantComponent
   ],
   imports: [
     BrowserModule,
@@ -60,8 +72,26 @@ import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.
     HttpClientModule,
     CardModule,
     ScrollPanelModule,
-    DialogModule
-  ],
+    DialogModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    TableModule,
+    ButtonModule,
+    DialogModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    CardModule,
+    ButtonModule,
+    ScrollPanelModule
+    ],
   providers: [
     CookieService
   ],

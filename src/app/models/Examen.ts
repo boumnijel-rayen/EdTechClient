@@ -7,5 +7,6 @@ export class Examen {
   note!: number;
   etudiant!: Utilisateur;
   matiere!: Matiere;
-
+  enonce!: string;
+  travail!: string;
 }

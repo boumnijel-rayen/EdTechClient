@@ -1,0 +1,14 @@
+<div class="container mt-5">
+    <h2 class="mb-4">Liste des Examens</h2>
+    <div *ngIf="exams.length === 0">
+      <p>Aucun examen disponible pour cette matière.</p>
+    </div>
+    <div *ngIf="exams.length > 0" class="list-group">
+      <div *ngFor="let exam of exams" class="list-group-item">
+        <h4 class="mb-1">{{ exam.matiere.nom }}</h4>
+        <p class="mb-1"><strong>Enoncé:</strong> {{ exam.enonce }}</p>
+        <p class="mb-1"><strong>Travail:</strong> {{ exam.travail }}</p>
+      </div>
+    </div>
+  </div>
+  

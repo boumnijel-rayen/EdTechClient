@@ -5,6 +5,6 @@ export class Matiere {
   id!: number;
   nom!: string;
   description!: string;
-  examens!: Set<Examen>;
-  enseignants!: Set<Utilisateur>;
+ // examens!: Set<Examen>;
+  //enseignants!: Set<Utilisateur>;
 }
