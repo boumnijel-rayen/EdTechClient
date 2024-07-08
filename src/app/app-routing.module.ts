@@ -8,8 +8,19 @@ import { RegisterComponent } from './Home/register/register.component';
 import { HomeComponent } from './Home/home/home.component';
 import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.component';
 import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.component';
+import { ListRendezVousComponent } from './Pages/list-rendez-vous/list-rendez-vous.component';
 
 const routes: Routes = [
+
+  { path: '', redirectTo: '/app/rdv-list', pathMatch: 'full' },
+  {
+    path: 'app',
+    component: SidebarComponent,
+    children: [
+      { path: 'rdv-list', component: ListRendezVousComponent}
+    ]
+  },
+  { path: '**', redirectTo: '/app/rdv-list' },
   {path: 'app', redirectTo: 'app/list-event'},
   {path: 'app', component: SidebarComponent, children: [
     {path: 'list-event', component: ListEventComponent},

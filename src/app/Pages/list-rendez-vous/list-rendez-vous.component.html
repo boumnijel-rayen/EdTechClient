@@ -1,0 +1,102 @@
+<div class="container mt-5">
+  <h2 class="text-center">Liste des Rendez-Vous</h2>
+  <p-toolbar styleClass="mb-4 gap-2">
+    <ng-template pTemplate="left">
+      <p-button
+        pRipple
+        severity="success"
+        label="New"
+        icon="pi pi-plus"
+        class="mr-2"
+        (click)="showAddDialog()"
+      ></p-button>
+      <p-button
+        pRipple
+        severity="danger"
+        label="Delete"
+        icon="pi pi-trash"
+        (click)="deleteSelectedRendezVous()"
+        [disabled]="!selectedRendezvous || selectedRendezvous.length === 0"
+      ></p-button>
+    </ng-template>
+  </p-toolbar>
+
+  <p-table
+    [value]="rendezVousList"
+    selectionMode="multiple"
+    [(selection)]="selectedRendezvous"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSelectableColumn></th>
+        <th>Select</th>
+        <th>ID</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Status</th>
+        <th>Validateur</th>
+        <th>Etudiant</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rendezVous>
+      <tr>
+        <td pSelectableColumn></td>
+        <td><input type="checkbox" (change)="onCheckboxChange(rendezVous)"></td>
+        <td>{{ rendezVous.id }}</td>
+        <td>{{ rendezVous.startTime | date:'short' }}</td>
+        <td>{{ rendezVous.endTime | date:'short' }}</td>
+        <td><p-tag [value]="rendezVous.statut" [severity]="getSeverity(rendezVous.statut)"></p-tag></td>
+        <td>{{ rendezVous.validateur.prenom }} {{ rendezVous.validateur.nom }}</td>
+        <td>{{ rendezVous.etudiant.prenom }} {{ rendezVous.etudiant.nom }}</td>
+        <td>
+          <p-button pRipple  icon="pi pi-pencil"  class="p-button-rounded p-button-success mr-2" (click)="showEditDialog(rendezVous)"></p-button>
+          <p-button pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteRendezVous(rendezVous.id)" ></p-button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p-dialog header="{{ dialogTitle }}" [(visible)]="displayDialog" modal="modal" [closable]="false">
+    <form (ngSubmit)="saveRendezVous()">
+      <div class="p-field">
+        <label for="startTime">Start Time</label>
+        <input id="startTime" type="datetime-local" pInputText [(ngModel)]="rendezVous.startTime" name="startTime">
+      </div>
+      <div class="p-field">
+        <label for="endTime">End Time</label>
+        <input id="endTime" type="datetime-local" pInputText [(ngModel)]="rendezVous.endTime" name="endTime">
+      </div>
+      <div class="p-field">
+        <label for="statut">Status</label>
+        <input id="statut" type="text" pInputText [(ngModel)]="rendezVous.statut" name="statut">
+      </div>
+      <div class="p-field">
+        <label for="validateur">Validateur</label>
+        <p-dropdown
+          id="validateur"
+          [options]="enseignants"
+          optionLabel="nom"
+          [(ngModel)]="selectedEnseignant"
+          name="validateur"
+        >
+        </p-dropdown>
+      </div>
+      <div class="p-field">
+        <label for="etudiant">Etudiant</label>
+        <p-dropdown
+          id="etudiant"
+          [options]="students"
+          optionLabel="nom"
+          [(ngModel)]="selectedStudent"
+          name="etudiant"
+        >
+        </p-dropdown>
+      </div>
+      <p-footer class="p-d-flex p-jc-between">
+        <p-button label="Save" icon="pi pi-check" type="submit"></p-button>
+        <p-button label="Cancel" icon="pi pi-times" (click)="hideDialog()" class="p-button-secondary"></p-button>
+      </p-footer>
+    </form>
+  </p-dialog>
+</div>
