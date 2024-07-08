@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit{
         this.auth.setToken(this.response.token)
         this.auth.setEmail(this.myForm.value.email);
         this.invalidLogin = false;
-        this.router.navigate(['/app/gestion-users']);
       },
       (error : any) => {
         if (error.status == 423){
@@ -57,6 +56,12 @@ export class LoginComponent implements OnInit{
           roles.push(element)
         });
         this.auth.setRoles(roles)
+        if (roles.includes('ADMIN'))
+        {
+          this.router.navigate(['/app/gestion-users']);
+        }else{
+          this.router.navigate(['/app/list-event']);
+        }
     })
     });
   }
