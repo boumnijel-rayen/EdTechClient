@@ -29,6 +29,8 @@ import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ModifEventComponent } from './Pages/modif-event/modif-event.component';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -66,10 +68,12 @@ import { ModifEventComponent } from './Pages/modif-event/modif-event.component';
     ScrollPanelModule,
     DialogModule,
     MultiSelectModule,
-    FileUploadModule
+    FileUploadModule,
+    ToastModule
   ],
   providers: [
-    CookieService
+    CookieService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

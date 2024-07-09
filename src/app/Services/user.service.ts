@@ -21,4 +21,25 @@ export class UserService {
     });
     return this.http.get('http://localhost:8089/user/getallExAdmin', {headers})
   }
+
+  updateUser(token : any, user : any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+    return this.http.put('http://localhost:8089/user/update', user, {headers})
+  }
+
+  archiver(token : any, id :any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+    return this.http.get('http://localhost:8089/user/archiver/' + id, {headers})
+  }
+
+  activer(token : any, id : any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+    return this.http.get('http://localhost:8089/user/activer/' + id, {headers})
+  }
 }
