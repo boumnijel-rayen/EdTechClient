@@ -16,11 +16,13 @@ export class SidebarComponent {
 
   items: MegaMenuItem[] | undefined;
   user : any
+  checkGesUsers : any
   constructor(private auth : AuthServiceService, private router : Router){
-    console.log(this.auth.getRoles())
   }
 
   ngOnInit() {
+    this.checkGesUsers = this.auth.getRoles().includes('ADMIN');
+    console.log(this.checkGesUsers)
       this.items = [
           {
               label: 'Company',
@@ -76,6 +78,7 @@ export class SidebarComponent {
   logout(){
     this.auth.deleteEmail();
     this.auth.deleteToken();
+    this.auth.deleteRoles();
     this.router.navigate(['/']);
   }
 
