@@ -33,7 +33,7 @@ export class ListeMatiereEtudiantComponent implements OnInit {
   }
 
   showMatiereExams(id: number): void {
-    this.router.navigate(['/matieres', id, 'exams']);
+    this.router.navigateByUrl(`/app/matieres/${id}/exams`);
   }
-
+  
 }

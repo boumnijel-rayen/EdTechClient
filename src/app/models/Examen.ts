@@ -9,4 +9,5 @@ export class Examen {
   matiere!: Matiere;
   enonce!: string;
   travail!: string;
+  deadline!: Date;
 }
