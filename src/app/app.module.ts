@@ -31,6 +31,8 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { ModifEventComponent } from './Pages/modif-event/modif-event.component';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { StatsUserComponent } from './Pages/stats-user/stats-user.component';
+import { ChartModule } from 'primeng/chart';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { ToastModule } from 'primeng/toast';
     HomeComponent,
     GestionUsersComponent,
     ConfirmAccountComponent,
-    ModifEventComponent
+    ModifEventComponent,
+    StatsUserComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,8 @@ import { ToastModule } from 'primeng/toast';
     DialogModule,
     MultiSelectModule,
     FileUploadModule,
-    ToastModule
+    ToastModule,
+    ChartModule
   ],
   providers: [
     CookieService,

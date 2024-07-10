@@ -1,0 +1,71 @@
+.container{
+    padding: 20px;
+    margin-top: 20px;
+    // border: 1px solid seagreen;
+}
+
+.title span{
+    color: darkgray;
+}
+
+.title{
+    margin-top: 40px;
+    margin-left: 25px;
+}
+
+.row1{
+    // border: 1px solid red;
+    margin-bottom: 50px;
+}
+
+.row1 .col{
+    margin: 20px;
+    padding: 2px;
+}
+
+.performance-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 150px; /* ou la largeur désirée */
+    padding: 20px;
+    border: 2px solid #36A2EB; /* Couleur de bordure */
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .performance-indicator:hover {
+    transform: translateY(-5px);
+  }
+  
+  .number {
+    font-size: 48px;
+    font-weight: bold;
+    color: #36A2EB; /* Couleur du nombre */
+  }
+  
+  .desc {
+    font-size: 18px;
+    color: #555; /* Couleur de la description */
+    margin: 0;
+  }
+
+// .row2{
+//     border: 1px solid rebeccapurple;
+// }
+
+.row2 .col{
+    // border: 1px solid blue;
+    margin: 20px;
+}
+
+.chart-container {
+    height: 300px;
+}
+
+.chart-container1 {
+    height: 300px;
+}

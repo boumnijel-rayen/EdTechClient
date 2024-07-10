@@ -9,6 +9,7 @@ import { HomeComponent } from './Home/home/home.component';
 import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.component';
 import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.component';
 import { ModifEventComponent } from './Pages/modif-event/modif-event.component';
+import { StatsUserComponent } from './Pages/stats-user/stats-user.component';
 
 const routes: Routes = [
   {path: 'app', redirectTo: 'app/list-event'},
@@ -16,7 +17,8 @@ const routes: Routes = [
     {path: 'list-event', component: ListEventComponent},
     {path: 'ajout-event', component: AjoutEventComponent},
     {path: 'modif-event/:id', component: ModifEventComponent},
-    {path: 'gestion-users', component: GestionUsersComponent}
+    {path: 'gestion-users', component: GestionUsersComponent},
+    {path: 'stats-user', component: StatsUserComponent}
   ]
   },
   {path: 'login', component: LoginComponent, pathMatch: 'full'},

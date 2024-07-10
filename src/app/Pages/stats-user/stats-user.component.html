@@ -1,0 +1,30 @@
+<p class="title"><span>pages</span> / Statistique utilisateurs</p>
+<div class="container text-center">
+    <div class="row row1">
+      <div class="col performance-indicator">
+        <div class="number">3</div>
+        <p class="desc">utilisateurs</p>
+      </div>
+      <div class="col performance-indicator">
+        <div class="number">3</div>
+        <p class="desc">utilisateurs</p>
+      </div>
+      <div class="col performance-indicator">
+        <div class="number">3</div>
+        <p class="desc">utilisateurs</p>
+      </div>
+    </div>
+    <div class="row row2">
+        <div class="col">
+            <div class="chart-container">
+                <p-chart type="line" [data]="data" [options]="options"></p-chart>
+            </div>
+        </div>
+        <div class="col">
+            <div class="chart-container1">
+                <p-chart type="doughnut" [data]="data1" [options]="options1"></p-chart>
+              </div>              
+        </div>
+      </div>
+  </div>
+
