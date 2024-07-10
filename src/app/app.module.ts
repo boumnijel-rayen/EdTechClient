@@ -33,6 +33,8 @@ import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { StatsUserComponent } from './Pages/stats-user/stats-user.component';
 import { ChartModule } from 'primeng/chart';
+import { RestaurantComponent } from './restaurant/restaurant.component';
+import { AjouterRepasComponent } from './ajouter-repas/ajouter-repas.component';
 
 
 @NgModule({
@@ -47,7 +49,11 @@ import { ChartModule } from 'primeng/chart';
     GestionUsersComponent,
     ConfirmAccountComponent,
     ModifEventComponent,
-    StatsUserComponent
+    StatsUserComponent,
+    AjouterRepasComponent,
+    
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -73,7 +79,12 @@ import { ChartModule } from 'primeng/chart';
     MultiSelectModule,
     FileUploadModule,
     ToastModule,
-    ChartModule
+    ChartModule,
+    RestaurantComponent,   
+     RouterModule.forRoot([
+      { path: 'restaurant', component: RestaurantComponent }
+    ])
+    
   ],
   providers: [
     CookieService,

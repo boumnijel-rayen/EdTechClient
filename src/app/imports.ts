@@ -104,6 +104,7 @@ import { AutoFocusModule } from 'primeng/autofocus';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -211,7 +212,10 @@ import { NgModule } from '@angular/core';
     StyleClassModule,
     IconFieldModule,
     InputIconModule,
-    AutoFocusModule
+    AutoFocusModule,
+    DragDropModule  ,
+    CommonModule,
+    
   ],
   exports: [
     AvatarModule,
@@ -318,7 +322,10 @@ import { NgModule } from '@angular/core';
     FloatLabelModule,
     IconFieldModule,
     InputIconModule,
-    AutoFocusModule
+    AutoFocusModule,
+    DragDropModule  ,
+    CommonModule,
+    
   ],
   providers: [  ]
 })

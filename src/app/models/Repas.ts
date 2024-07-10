@@ -4,8 +4,10 @@ export class Repas {
   id!: number;
   nom!: string;
   calories!: number;
+  categorie!: string;
   poidsCarbs!: number;
   poidsProteines!: number;
   poidsFats!: number;
-  menus!: Set<Menu>;
+  image: Uint8Array | undefined;
+  menus: Set<Menu> | undefined;
 }
