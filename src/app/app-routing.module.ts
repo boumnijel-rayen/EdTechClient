@@ -6,6 +6,7 @@ import { AjoutEventComponent } from './Pages/ajout-event/ajout-event.component';
 import { LoginComponent } from './Home/login/login.component';
 import { RegisterComponent } from './Home/register/register.component';
 import { HomeComponent } from './Home/home/home.component';
+import { ClassesComponent } from './classes/classes.component';
 import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.component';
 import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.component';
 import { ModifEventComponent } from './Pages/modif-event/modif-event.component';
@@ -15,9 +16,12 @@ import { AjouterRepasComponent } from './ajouter-repas/ajouter-repas.component';
 import { ListRendezVousComponent } from './Pages/list-rendez-vous/list-rendez-vous.component';
 
 const routes: Routes = [
+  {path: 'app', redirectTo: 'app/list-event' },
   {path: 'app', component: SidebarComponent, children: [
     {path: 'list-event', component: ListEventComponent},
     {path: 'ajout-event', component: AjoutEventComponent},
+    {path: 'classes', component: ClassesComponent, pathMatch: 'full'},
+    {path: 'gestion-users', component: GestionUsersComponent}
     {path: 'modif-event/:id', component: ModifEventComponent},
     {path: 'gestion-users', component: GestionUsersComponent},
     {path: 'stats-user', component: StatsUserComponent},
@@ -27,6 +31,7 @@ const routes: Routes = [
     { path: 'rdv-list', component: ListRendezVousComponent}
   ]
   },
+  
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
   {path: 'register', component: RegisterComponent, pathMatch: 'full'},
   {path: '', component: HomeComponent, pathMatch: 'full'},

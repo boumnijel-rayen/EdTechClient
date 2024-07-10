@@ -32,6 +32,7 @@ import { LoginComponent } from './Home/login/login.component';
 import { RegisterComponent } from './Home/register/register.component';
 import { AjoutEventComponent } from './Pages/ajout-event/ajout-event.component';
 import { AppointmentDialogComponent } from './Pages/appointment-dialog/appointment-dialog.component';
+import { ClassesComponent } from './classes/classes.component';
 import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.component';
 import { CookieService } from 'ngx-cookie-service';
 // import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.component';
@@ -47,7 +48,8 @@ import { AjouterRepasComponent } from './ajouter-repas/ajouter-repas.component';
 import { ListEventComponent } from './Pages/list-event/list-event.component';
 import { ListRendezVousComponent } from './Pages/list-rendez-vous/list-rendez-vous.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HomeComponent,
     GestionUsersComponent,
     ConfirmAccountComponent,
+    ClassesComponent,
     ModifEventComponent,
     StatsUserComponent,
     AjouterRepasComponent,
@@ -90,6 +93,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     CardModule,
     ScrollPanelModule,
     DialogModule,
+    TableModule,
+    ToastModule,
     MultiSelectModule,
     FileUploadModule,
     ToastModule,
