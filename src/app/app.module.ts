@@ -1,6 +1,8 @@
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -75,7 +77,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
         TagModule,
         ConfirmDialogModule,
         ToolbarModule,
-        DropdownModule], providers: [
+        DropdownModule,
+        MatDatepickerModule,
+        MatNativeDateModule], providers: [
         CookieService,ConfirmationService, MessageService,
         provideHttpClient(withInterceptorsFromDi())
     ] })

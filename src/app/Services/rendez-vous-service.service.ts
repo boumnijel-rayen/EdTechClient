@@ -17,14 +17,15 @@ export class RendezVousServiceService {
   getAllRendezVous(): Observable<RendezVous[]> {
     return this.http.get<RendezVous[]>(`${this.apiUrl}/getall`);
   }
+  addRendezVous(rendezVous: any): Observable<any>{
+    console.log('Adding RendezVous:', rendezVous);
+    return this.http.post(`${this.apiUrl}/save`, rendezVous);
+}
 
-  addRendezVous(rendezVous: RendezVous): Observable<RendezVous> {
-    return this.http.post<RendezVous>(`${this.apiUrl}/save`, rendezVous);
-  }
-
-  updateRendezVous(rendezVous: RendezVous): Observable<RendezVous> {
-    return this.http.put<RendezVous>(`${this.apiUrl}/update`, rendezVous);
-  }
+updateRendezVous(rendezVous: any): Observable<void> {
+    console.log('Updating RendezVous:', rendezVous);
+    return this.http.put<void>(`${this.apiUrl}/update`, rendezVous);
+}
 
   deleteRendezVous(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);

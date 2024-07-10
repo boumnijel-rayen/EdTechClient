@@ -1,8 +1,8 @@
-import { Utilisateur } from './../Models/Utilisateur';
-import { Injectable } from '@angular/core';
-import { AuthServiceService } from './auth-service.service';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Utilisateur } from './../Models/Utilisateur';
+import { AuthServiceService } from './auth-service.service';
 
 @Injectable({
   providedIn: 'root'

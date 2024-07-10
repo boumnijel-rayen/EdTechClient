@@ -50,52 +50,62 @@
         <td>{{ rendezVous.validateur.prenom }} {{ rendezVous.validateur.nom }}</td>
         <td>{{ rendezVous.etudiant.prenom }} {{ rendezVous.etudiant.nom }}</td>
         <td>
-          <p-button pRipple  icon="pi pi-pencil"  class="p-button-rounded p-button-success mr-2" (click)="showEditDialog(rendezVous)"></p-button>
-          <p-button pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteRendezVous(rendezVous.id)" ></p-button>
+          <p-button pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="showEditDialog(rendezVous)"></p-button>
+          <p-button pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteRendezVous(rendezVous.id)"></p-button>
         </td>
       </tr>
     </ng-template>
   </p-table>
 
-  <p-dialog header="{{ dialogTitle }}" [(visible)]="displayDialog" modal="modal" [closable]="false">
-    <form (ngSubmit)="saveRendezVous()">
+  <p-dialog header="{{ dialogTitle }}" [(visible)]="displayDialog" modal="modal" [closable]="false" [style]="{ width: '50vw' }">
+    <form [formGroup]="rendezVousForm"  class="form-container">
       <div class="p-field">
         <label for="startTime">Start Time</label>
-        <input id="startTime" type="datetime-local" pInputText [(ngModel)]="rendezVous.startTime" name="startTime">
+        <input id="startTime" type="datetime-local" pInputText formControlName="startTime">
+        <div *ngIf="rendezVousForm.controls['startTime'].invalid && rendezVousForm.controls['startTime'].touched" class="p-error">
+          Start Time is required
+        </div>
       </div>
+
       <div class="p-field">
         <label for="endTime">End Time</label>
-        <input id="endTime" type="datetime-local" pInputText [(ngModel)]="rendezVous.endTime" name="endTime">
+        <input id="endTime" type="datetime-local" pInputText formControlName="endTime">
+        <div *ngIf="rendezVousForm.controls['endTime'].invalid && rendezVousForm.controls['endTime'].touched" class="p-error">
+          End Time is required
+        </div>
       </div>
+
       <div class="p-field">
-        <label for="statut">Status</label>
-        <input id="statut" type="text" pInputText [(ngModel)]="rendezVous.statut" name="statut">
+        <ng-container *ngIf="updateRdv">
+          <label for="statut">Status</label>
+          <p-dropdown id="statut" [options]="statusOptions" formControlName="statut"></p-dropdown>
+        </ng-container>
+        <div *ngIf="rendezVousForm.controls['statut'] && updateRdv && rendezVousForm.controls['statut'].touched" class="p-error">
+          Status is required
+        </div>
       </div>
+
+
+
       <div class="p-field">
         <label for="validateur">Validateur</label>
-        <p-dropdown
-          id="validateur"
-          [options]="enseignants"
-          optionLabel="nom"
-          [(ngModel)]="selectedEnseignant"
-          name="validateur"
-        >
-        </p-dropdown>
+        <p-dropdown id="validateur" [options]="enseignants" optionLabel="prenom" optionValue="id" formControlName="validateur"></p-dropdown>
+        <div *ngIf="rendezVousForm.controls['validateur'].invalid && rendezVousForm.controls['validateur'].touched" class="p-error">
+          Validateur is required
+        </div>
       </div>
+
       <div class="p-field">
         <label for="etudiant">Etudiant</label>
-        <p-dropdown
-          id="etudiant"
-          [options]="students"
-          optionLabel="nom"
-          [(ngModel)]="selectedStudent"
-          name="etudiant"
-        >
-        </p-dropdown>
+        <p-dropdown id="etudiant" [options]="students" optionLabel="prenom" optionValue="id" formControlName="etudiant"></p-dropdown>
+        <div *ngIf="rendezVousForm.controls['etudiant'].invalid && rendezVousForm.controls['etudiant'].touched" class="p-error">
+          Etudiant is required
+        </div>
       </div>
-      <p-footer class="p-d-flex p-jc-between">
-        <p-button label="Save" icon="pi pi-check" type="submit"></p-button>
-        <p-button label="Cancel" icon="pi pi-times" (click)="hideDialog()" class="p-button-secondary"></p-button>
+
+      <p-footer>
+        <p-button label="Save" icon="pi pi-check" (click)="saveRendezVous()" type="submit" [disabled]="!rendezVousForm.valid"></p-button>
+        <p-button label="Cancel" icon="pi pi-times" (click)="hideDialog()" class="p-button-text"></p-button>
       </p-footer>
     </form>
   </p-dialog>
