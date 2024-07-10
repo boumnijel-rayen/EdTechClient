@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit{
   }
 
   connect(){
+    console.log(this.myForm.value)
     this.auth.signIn(this.myForm.value.email, this.myForm.value.password).subscribe(
       (data) => {
         this.response = data;
@@ -46,9 +47,11 @@ export class LoginComponent implements OnInit{
           this.invalidLogin = true;
           return
         }
-        
-      }
+
+      },
     ).add(() => {
+      console.log(this.auth.getEmail())
+      console.log(this.auth.getToken())
       this.user.GetUser(this.auth.getEmail(), this.auth.getToken()).subscribe((data : any) => {
         this.userConn = data
         const roles : string[] = [];

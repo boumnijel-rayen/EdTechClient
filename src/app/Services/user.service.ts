@@ -12,6 +12,7 @@ export class UserService {
     const headers = new HttpHeaders({
       'Authorization' : `Bearer ${token}`,
     });
+
     return this.http.get("http://localhost:8089/user/getByEmail/"+ email, {headers});
   }
 
