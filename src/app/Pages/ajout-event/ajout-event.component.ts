@@ -72,7 +72,7 @@ export class AjoutEventComponent implements OnInit {
       })
 
 
-      //this.eventAdded.emit(event);
+      this.eventAdded.emit(event);
     }
     this.evenementForm.reset();
   }
