@@ -8,13 +8,18 @@ import { RegisterComponent } from './Home/register/register.component';
 import { HomeComponent } from './Home/home/home.component';
 import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.component';
 import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.component';
+import { RestaurantComponent } from './restaurant/restaurant.component';
+import { AjouterRepasComponent } from './ajouter-repas/ajouter-repas.component';
 
 const routes: Routes = [
   {path: 'app', redirectTo: 'app/list-event'},
   {path: 'app', component: SidebarComponent, children: [
     {path: 'list-event', component: ListEventComponent},
     {path: 'ajout-event', component: AjoutEventComponent},
-    {path: 'gestion-users', component: GestionUsersComponent}
+    {path: 'gestion-users', component: GestionUsersComponent},
+    {path: 'Restaurant', component: RestaurantComponent},
+    {path: 'AjouterRepas', component: AjouterRepasComponent}
+
   ]
   },
   {path: 'login', component: LoginComponent, pathMatch: 'full'},

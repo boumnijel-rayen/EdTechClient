@@ -5,6 +5,5 @@ export class Menu {
   id!: number;
   nom!: string;
   type!: string;
-  demandes!: Set<DemandeMenu>;
-  repas!: Set<Repas>;
+   repas!: Repas[];
 }

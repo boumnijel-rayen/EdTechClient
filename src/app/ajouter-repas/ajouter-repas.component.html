@@ -1,0 +1,72 @@
+<div class="wrapper">
+    <div class="container">
+      <h2 class="text-center my-4">Ajouter un nouveau repas</h2>
+      <form [formGroup]="foodForm" (ngSubmit)="onSubmit()">
+        <div class="p-fluid">
+          <div class="p-field">
+            <label for="nom">Nom</label>
+            <input id="nom" type="text" pInputText formControlName="nom" class="form-control" />
+            @if (foodForm.controls['nom'].invalid && foodForm.controls['nom'].touched) {
+              <div class="p-error text-danger mt-1">Nom est obligatoire.</div>
+            }
+          </div>
+          <br>
+          <div class="p-field">
+            <label for="calories">Calories</label>
+            <input id="calories" type="number" pInputText formControlName="calories" class="form-control" />
+            @if (foodForm.controls['calories'].invalid && foodForm.controls['calories'].touched) {
+              <div class="p-error text-danger mt-1">Calories est obligatoire et doit être un nombre.</div>
+            }
+          </div>
+          <br>
+          <div class="p-field">
+            <label for="categorie">Categorie</label>
+            <select id="categorie" formControlName="categorie" class="form-control">
+              <option value="">Sélectionner une catégorie</option>
+              <option value="Suite">Suite</option>
+              <option value="platPrincipal">Plat Principal</option>
+              <option value="Entree">Entrée</option>
+              <option value="Dessert">Dessert</option>
+            </select>
+            @if (foodForm.controls['categorie'].invalid && foodForm.controls['categorie'].touched) {
+              <div class="p-error text-danger mt-1">Categorie est obligatoire.</div>
+            }
+          </div>
+          <br>
+          <div class="p-field">
+            <label for="poidsCarbs">Carbs Weight</label>
+            <input id="poidsCarbs" type="number" pInputText formControlName="poidsCarbs" class="form-control" />
+            @if (foodForm.controls['poidsCarbs'].invalid && foodForm.controls['poidsCarbs'].touched) {
+              <div class="p-error text-danger mt-1">Carbs Weight est obligatoire et doit être un nombre.</div>
+            }
+          </div>
+          <br>
+          <div class="p-field">
+            <label for="poidsProteines">Proteins Weight</label>
+            <input id="poidsProteines" type="number" pInputText formControlName="poidsProteines" class="form-control" />
+            @if (foodForm.controls['poidsProteines'].invalid && foodForm.controls['poidsProteines'].touched) {
+              <div class="p-error text-danger mt-1">Proteins Weight est obligatoire et doit être un nombre.</div>
+            }
+          </div>
+          <br>
+          <div class="p-field">
+            <label for="poidsFats">Fats Weight</label>
+            <input id="poidsFats" type="number" pInputText formControlName="poidsFats" class="form-control" />
+            @if (foodForm.controls['poidsFats'].invalid && foodForm.controls['poidsFats'].touched) {
+              <div class="p-error text-danger mt-1">Fats Weight est obligatoire et doit être un nombre.</div>
+            }
+          </div>
+          <br>
+          <div class="p-field">
+            <label for="image">Image</label>
+            <input id="image" type="file" pInputText formControlName="image" class="form-control" />
+          </div>
+          <br>
+          <div class="p-field text-center" style="margin: 10px;">
+            <button pButton type="submit" label="Submit" [disabled]="foodForm.invalid" class="btn btn-primary" style="width: 48%; margin-right: 4%;"></button>
+            <button pButton type="button" label="Reset" class="btn btn-secondary" (click)="onReset()" style="width: 48%;"></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

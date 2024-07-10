@@ -27,6 +27,8 @@ import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.compo
 import { CookieService } from 'ngx-cookie-service';
 import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.component';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { RestaurantComponent } from './restaurant/restaurant.component';
+import { AjouterRepasComponent } from './ajouter-repas/ajouter-repas.component';
 
 
 @NgModule({
@@ -39,7 +41,11 @@ import { MultiSelectModule } from 'primeng/multiselect';
     RegisterComponent,
     HomeComponent,
     GestionUsersComponent,
-    ConfirmAccountComponent
+    ConfirmAccountComponent,
+    AjouterRepasComponent,
+    
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -62,7 +68,12 @@ import { MultiSelectModule } from 'primeng/multiselect';
     CardModule,
     ScrollPanelModule,
     DialogModule,
-    MultiSelectModule
+    MultiSelectModule,
+    RestaurantComponent,   
+     RouterModule.forRoot([
+      { path: 'restaurant', component: RestaurantComponent }
+    ])
+    
   ],
   providers: [
     CookieService
