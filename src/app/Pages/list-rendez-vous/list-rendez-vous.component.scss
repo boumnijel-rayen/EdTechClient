@@ -1,0 +1,32 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+}
+
+.p-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.p-field input,
+.p-field p-dropdown {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.p-error {
+  color: red;
+  font-size: 0.875em;
+}
+
+p-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 10px;
+}

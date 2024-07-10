@@ -2,8 +2,9 @@ import { Utilisateur } from './Utilisateur';
 
 export class RendezVous {
   id!: number;
-  date!: Date;
-  statut!: string;
+  endTime!: Date;
+  startTime!: Date;
+  statut!: 'EN_COURS' | 'TERMINE' | 'EN_ATTENTE' | 'CANCELED';
   etudiant!: Utilisateur;
   validateur!: Utilisateur;
 }
