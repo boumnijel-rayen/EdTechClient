@@ -30,7 +30,6 @@ export class ClassesComponent implements OnInit {
     this.loadClasses();
 
     this.classForm = this.fb.group({
-      id: [null],
       nom: ['', Validators.required],
       specialite: ['', Validators.required],
       nbreEtudiant: [0, Validators.required],
@@ -97,7 +96,7 @@ export class ClassesComponent implements OnInit {
       this.newClass = { ...this.classForm.value };
 
       if (this.newClass.id) {
-        this.classesService.updateClasse(this.newClass.id, this.newClass).subscribe(() => {
+        this.classesService.updateClasse(this.newClass.id,this.newClass).subscribe(() => {
           this.displayAddClassDialog = false;
           this.messageService.add({ severity: 'success', summary: 'Class Updated', detail: this.newClass.nom, life: 3000 });
           this.loadClasses();

@@ -33,9 +33,9 @@
         <td>{{ classe.nbreEtudiant }}</td>
         <td>{{ classe.nbreCapacite }}</td>
         <td>
-          <p-button label="Add Student" icon="pi pi-plus" [rounded]="true" (click)="showAddStudentDialog(classe.id)" class="p-button-danger"></p-button>
-          <p-button label="Edit" icon="pi pi-pencil" [rounded]="true" (click)="editClass(classe)" class="p-button-success"></p-button>
-          <p-button label="Delete" icon="pi pi-trash" [rounded]="true" (click)="deleteClasse(classe)" class="p-button-danger"></p-button>
+          <p-button label="Add Student" icon="pi pi-plus" [rounded]="true" (click)="showAddStudentDialog(classe.id)"></p-button>
+          <p-button label="Edit" icon="pi pi-pencil" class="p-button-warning" (click)="editClass(classe)"></p-button>
+          <p-button label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteClasse(classe)"></p-button>
         </td>
       </tr>
     </ng-template>
@@ -47,7 +47,8 @@
               <ng-template pTemplate="header">
                 <tr>
                   <th pSortableColumn="id">Id <p-sortIcon field="id"></p-sortIcon></th>
-                  <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                  <th pSortableColumn="nom">Last Name <p-sortIcon field="nom"></p-sortIcon></th>
+                  <th pSortableColumn="prenom">First Name <p-sortIcon field="prenom"></p-sortIcon></th>
                   <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
                   <th>Actions</th>
                 </tr>
@@ -55,7 +56,8 @@
               <ng-template pTemplate="body" let-etudiant>
                 <tr>
                   <td>{{ etudiant.id }}</td>
-                  <td>{{ etudiant.name }}</td>
+                  <td>{{ etudiant.nom }}</td>
+                  <td>{{ etudiant.prenom }}</td>
                   <td>{{ etudiant.email }}</td>
                   <td>
                     <p-button label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteStudent(classe.id, etudiant.email)"></p-button>
@@ -64,7 +66,7 @@
               </ng-template>
               <ng-template pTemplate="emptymessage">
                 <tr>
-                  <td colspan="4">There are no students in this class yet.</td>
+                  <td colspan="5">There are no students in this class yet.</td>
                 </tr>
               </ng-template>
             </p-table>
@@ -72,22 +74,18 @@
         </td>
       </tr>
     </ng-template>
-    
   </p-table>
 </div>
 
-<p-dialog header="Add Class" [(visible)]="displayAddClassDialog" modal="true" [style]="{width: '50vw'}">
+<p-dialog [(visible)]="displayAddClassDialog" header="Add Class" [modal]="true" [closable]="false" [dismissableMask]="true">
   <form [formGroup]="classForm" (ngSubmit)="addClass()">
     <div class="p-fluid">
-      <!-- Hidden input for class ID -->
-      <input type="hidden" formControlName="id" />
-
       <div class="p-field">
         <label for="nom">Name</label>
         <input id="nom" type="text" pInputText formControlName="nom" />
       </div>
       <div class="p-field">
-        <label for="specialite">Specialite</label>
+        <label for="specialite">Speciality</label>
         <input id="specialite" type="text" pInputText formControlName="specialite" />
       </div>
       <div class="p-field">
@@ -98,26 +96,25 @@
         <label for="nbreCapacite">Capacity</label>
         <input id="nbreCapacite" type="number" pInputText formControlName="nbreCapacite" />
       </div>
-      <div class="flex justify-content-end gap-2">
-        <p-button label="Save" [rounded]="true" icon="pi pi-check" type="submit"></p-button>
-        <p-button label="Cancel" [rounded]="true" icon="pi pi-times" (click)="displayAddClassDialog = false"></p-button>
-      </div>
+    </div>
+    <div class="p-d-flex p-jc-between p-mt-4">
+      <p-button label="Cancel" icon="pi pi-times" (click)="displayAddClassDialog=false"></p-button>
+      <p-button label="Save" icon="pi pi-check" type="submit" [disabled]="classForm.invalid"></p-button>
     </div>
   </form>
 </p-dialog>
 
-
-<p-dialog header="Add Student" [(visible)]="displayAddStudentDialog" modal="true" [style]="{width: '30vw'}">
+<p-dialog [(visible)]="displayAddStudentDialog" header="Add Student" [modal]="true" [closable]="false" [dismissableMask]="true">
   <form [formGroup]="studentForm" (ngSubmit)="addStudent()">
     <div class="p-fluid">
       <div class="p-field">
         <label for="studentId">Student Email</label>
         <input id="studentId" type="text" pInputText formControlName="studentId" />
       </div>
-      <div class="flex justify-content-end gap-2">
-        <p-button label="Save" [rounded]="true" icon="pi pi-check" type="submit"></p-button>
-        <p-button label="Cancel" [rounded]="true" icon="pi pi-times" (click)="displayAddStudentDialog = false"></p-button>
-      </div>
+    </div>
+    <div class="p-d-flex p-jc-between p-mt-4">
+      <p-button label="Cancel" icon="pi pi-times" (click)="displayAddStudentDialog=false"></p-button>
+      <p-button label="Add" icon="pi pi-check" type="submit" [disabled]="studentForm.invalid"></p-button>
     </div>
   </form>
 </p-dialog>
