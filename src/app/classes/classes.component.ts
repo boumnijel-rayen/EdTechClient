@@ -27,11 +27,10 @@ export class ClassesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.classesService.getAllClasses().subscribe((data) => {
-      this.classes = data;
-    });
+    this.loadClasses();
 
     this.classForm = this.fb.group({
+      id: [null],
       nom: ['', Validators.required],
       specialite: ['', Validators.required],
       nbreEtudiant: [0, Validators.required],
@@ -51,15 +50,22 @@ export class ClassesComponent implements OnInit {
   }
 
   editClass(cls: Classe) {
-    this.classesService.updateClasse(cls).subscribe(() => {
-      this.messageService.add({ severity: 'info', summary: 'Edit Class', detail: cls.nom, life: 3000 });
-    });
+    this.newClass = { ...cls }; // Copy class details to the form
+    this.classForm.patchValue(this.newClass);
+    this.displayAddClassDialog = true;
   }
 
   deleteClasse(cls: Classe) {
     this.classesService.deleteClasse(cls.id).subscribe(() => {
       this.classes = this.classes.filter(c => c.id !== cls.id);
       this.messageService.add({ severity: 'success', summary: 'Class Deleted', detail: cls.nom, life: 3000 });
+    });
+  }
+
+  deleteStudent(classeId: number, email: string) {
+    this.classesService.removeStudentFromClass(email, classeId).subscribe(() => {
+      this.messageService.add({ severity: 'success', summary: 'Student Deleted', detail: email, life: 3000 });
+      this.loadClasses(); // Refresh the class list
     });
   }
 
@@ -76,6 +82,8 @@ export class ClassesComponent implements OnInit {
   }
 
   showAddClassDialog() {
+    this.newClass = new Classe(); // Reset newClass
+    this.classForm.reset(); // Reset form
     this.displayAddClassDialog = true;
   }
 
@@ -86,17 +94,21 @@ export class ClassesComponent implements OnInit {
 
   addClass() {
     if (this.classForm.valid) {
-      this.newClass.nom = this.classForm.value.nom;
-      this.newClass.specialite = this.classForm.value.specialite;
-      this.newClass.nbreEtudiant = this.classForm.value.nbreEtudiant;
-      this.newClass.nbreCapacite = this.classForm.value.nbreCapacite;
+      this.newClass = { ...this.classForm.value };
 
-      this.classesService.addClasse(this.newClass).subscribe(() => {
-        this.displayAddClassDialog = false;
-        this.messageService.add({ severity: 'success', summary: 'Class Added', detail: this.newClass.nom, life: 3000 });
-        this.newClass = new Classe();
-        this.classForm.reset();
-      });
+      if (this.newClass.id) {
+        this.classesService.updateClasse(this.newClass.id, this.newClass).subscribe(() => {
+          this.displayAddClassDialog = false;
+          this.messageService.add({ severity: 'success', summary: 'Class Updated', detail: this.newClass.nom, life: 3000 });
+          this.loadClasses();
+        });
+      } else {
+        this.classesService.addClasse(this.newClass).subscribe(() => {
+          this.displayAddClassDialog = false;
+          this.messageService.add({ severity: 'success', summary: 'Class Added', detail: this.newClass.nom, life: 3000 });
+          this.loadClasses();
+        });
+      }
     }
   }
 
@@ -106,9 +118,14 @@ export class ClassesComponent implements OnInit {
       this.classesService.addStudentToClass(email, this.selectedClassId).subscribe(() => {
         this.displayAddStudentDialog = false;
         this.messageService.add({ severity: 'success', summary: 'Student Added', detail: email, life: 3000 });
-        this.studentForm.reset();
-        // Optionally, refresh the class list or the student list in the expanded row.
+        this.loadClasses();
       });
     }
+  }
+
+  loadClasses() {
+    this.classesService.getAllClasses().subscribe((data) => {
+      this.classes = data;
+    });
   }
 }

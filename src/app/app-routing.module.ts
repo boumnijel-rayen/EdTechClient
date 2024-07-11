@@ -21,7 +21,7 @@ const routes: Routes = [
     {path: 'list-event', component: ListEventComponent},
     {path: 'ajout-event', component: AjoutEventComponent},
     {path: 'classes', component: ClassesComponent, pathMatch: 'full'},
-    {path: 'gestion-users', component: GestionUsersComponent}
+    {path: 'gestion-users', component: GestionUsersComponent},
     {path: 'modif-event/:id', component: ModifEventComponent},
     {path: 'gestion-users', component: GestionUsersComponent},
     {path: 'stats-user', component: StatsUserComponent},

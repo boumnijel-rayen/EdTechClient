@@ -48,8 +48,7 @@ import { AjouterRepasComponent } from './ajouter-repas/ajouter-repas.component';
 import { ListEventComponent } from './Pages/list-event/list-event.component';
 import { ListRendezVousComponent } from './Pages/list-rendez-vous/list-rendez-vous.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { TableModule } from 'primeng/table';
-import { ToastModule } from 'primeng/toast';
+
 
 @NgModule({
   declarations: [
