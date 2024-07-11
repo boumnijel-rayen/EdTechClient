@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from'@angular/platform-browser'; 
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from'@angular/material/dialog'; 
+import { MatButtonModule } from'@angular/material/button'; 
+import { MatInputModule } from'@angular/material/input'; 
+import { MatFormFieldModule } from'@angular/material/form-field'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -17,7 +17,7 @@ import { RegisterComponent } from './Home/register/register.component';
 import { HomeComponent } from './Home/home/home.component';
 import { RouterModule } from '@angular/router';
 import { SidebarModule } from 'primeng/sidebar';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from'@angular/platform-browser/animations'; 
 import { SplitterModule } from 'primeng/splitter';
 import {Avatar, AvatarModule} from 'primeng/avatar';
 import { MegaMenuModule } from 'primeng/megamenu';
@@ -50,7 +50,7 @@ import { ListeMatiereEtudiantComponent } from './liste-matiere-etudiant/liste-ma
     MatiereListComponent,
     AddMatiereDialogComponent,
     MatiereExamsComponent,
-    ListeMatiereEtudiantComponent
+    ListeMatiereEtudiantComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,7 +90,7 @@ import { ListeMatiereEtudiantComponent } from './liste-matiere-etudiant/liste-ma
     MatButtonModule,
     CardModule,
     ButtonModule,
-    ScrollPanelModule
+    ScrollPanelModule,
     ],
   providers: [
     CookieService

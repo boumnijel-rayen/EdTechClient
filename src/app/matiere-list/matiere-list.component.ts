@@ -65,4 +65,8 @@ export class MatiereListComponent implements OnInit {
       this.deleteMatiere(this.selectedMatiere.id);
     }
   }
+
+  navigateToExams(matiereId: number): void {
+    this.router.navigate(['/exams', matiereId]);
+  }
 }

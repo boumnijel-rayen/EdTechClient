@@ -20,7 +20,7 @@ const routes: Routes = [
     {path: 'gestion-users', component: GestionUsersComponent},
     { path: 'matieres', component: MatiereListComponent },
     { path: 'matieres-etudiant', component: ListeMatiereEtudiantComponent },
-    { path: 'matieres/:id/exams', component: MatiereExamsComponent }
+    { path: 'matieres/:id/exams', component: MatiereExamsComponent },
   ]
   }, 
  

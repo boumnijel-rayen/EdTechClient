@@ -3,7 +3,7 @@ import { Matiere } from '../models/Matiere';
 import { Router } from '@angular/router';
 import { MatiereServiceService } from '../Services/matiere-service.service';
 import { ExamServiceService } from '../Services/exam-service.service';
-import { Examen } from '../models/Examen';
+import { Examen } from'../models/Examen'; 
 @Component({
   selector: 'app-liste-matiere-etudiant',
   templateUrl: './liste-matiere-etudiant.component.html',
@@ -35,5 +35,6 @@ export class ListeMatiereEtudiantComponent implements OnInit {
   showMatiereExams(id: number): void {
     this.router.navigateByUrl(`/app/matieres/${id}/exams`);
   }
+  
   
 }
