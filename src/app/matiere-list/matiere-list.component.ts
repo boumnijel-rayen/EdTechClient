@@ -4,6 +4,7 @@ import { Matiere } from '../models/Matiere';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddMatiereDialogComponent } from '../add-matiere-dialog/add-matiere-dialog.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-matiere-list',
@@ -11,12 +12,24 @@ import { AddMatiereDialogComponent } from '../add-matiere-dialog/add-matiere-dia
   styleUrls: ['./matiere-list.component.scss']
 })
 export class MatiereListComponent implements OnInit {
-  matieres: Matiere[] = [];
-  displayDialog: boolean = false;
+   matieres: Matiere[] = [];
+  displayEditDialog: boolean = false;
   selectedMatiere: Matiere | null = null;
+  editMatiereForm: FormGroup;
 
-  constructor(private matiereService: MatiereServiceService, private dialog: MatDialog, private router: Router) { }
-  
+  constructor(
+    private matiereService: MatiereServiceService,
+    private dialog: MatDialog,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
+    this.editMatiereForm = this.fb.group({
+      nom: ['', Validators.required],
+      description: ['', Validators.required],
+      // Ajoutez d'autres champs nécessaires ici
+    });
+  }
+
   ngOnInit(): void {
     this.loadMatieres();
   }
@@ -33,8 +46,24 @@ export class MatiereListComponent implements OnInit {
     });
   }
 
-  navigateToUpdateForm(id: number): void {
-    this.router.navigate(['/update-matiere', id]);
+  openEditMatiereDialog(matiere: Matiere): void {
+    this.selectedMatiere = matiere;
+    this.editMatiereForm.patchValue({
+      nom: matiere.nom,
+      description: matiere.description,
+      // Ajoutez d'autres champs nécessaires ici
+    });
+    this.displayEditDialog = true;
+  }
+
+  submitEditMatiere(): void {
+    if (this.editMatiereForm.valid && this.selectedMatiere) {
+      const updatedMatiere = { ...this.selectedMatiere, ...this.editMatiereForm.value };
+      this.matiereService.updateMatiere(this.selectedMatiere.id, updatedMatiere).subscribe(() => {
+        this.loadMatieres();
+        this.displayEditDialog = false;
+      });
+    }
   }
 
   openAddMatiereDialog(): void {
@@ -47,26 +76,5 @@ export class MatiereListComponent implements OnInit {
         this.loadMatieres();
       }
     });
-  }
-
-  showDialog(matiere: Matiere): void {
-    this.selectedMatiere = matiere;
-    this.displayDialog = true;
-  }
-
-  handleNavigateToUpdateForm(): void {
-    if (this.selectedMatiere && this.selectedMatiere.id !== undefined) {
-      this.navigateToUpdateForm(this.selectedMatiere.id);
-    }
-  }
-
-  handleDeleteMatiere(): void {
-    if (this.selectedMatiere && this.selectedMatiere.id !== undefined) {
-      this.deleteMatiere(this.selectedMatiere.id);
-    }
-  }
-
-  navigateToExams(matiereId: number): void {
-    this.router.navigate(['/exams', matiereId]);
   }
 }
