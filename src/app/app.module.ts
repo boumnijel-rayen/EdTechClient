@@ -43,6 +43,9 @@ import { AjoutEventComponent } from './Pages/ajout-event/ajout-event.component';
 import { AppointmentDialogComponent } from './Pages/appointment-dialog/appointment-dialog.component';
 // import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.component';
 // import { CookieService } from 'ngx-cookie-service';
+import { ClassesComponent } from './classes/classes.component';
+// import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.component';
+// import { CookieService } from 'ngx-cookie-service';
 // import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.component';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FileUploadModule } from 'primeng/fileupload';
@@ -91,6 +94,7 @@ import { ExamenEnsComponent } from './examen-ens/examen-ens.component';
     HomeComponent,
     GestionUsersComponent,
     ConfirmAccountComponent,
+    ClassesComponent,
     ModifEventComponent,
     StatsUserComponent,
     AjouterRepasComponent,
@@ -125,6 +129,8 @@ import { ExamenEnsComponent } from './examen-ens/examen-ens.component';
     CardModule,
     ScrollPanelModule,
     DialogModule,
+    TableModule,
+    ToastModule,
     MultiSelectModule,
     FileUploadModule,
     ToastModule,

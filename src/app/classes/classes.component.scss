@@ -1,0 +1,58 @@
+
+.grid-container {
+    padding: 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+    gap: 15px; /* Adjust the gap between cards */
+    overflow-y: auto;
+  }
+  .card-content {
+    word-wrap: break-word;
+  
+  }
+  p-dialog{
+    word-wrap: break-word;
+  }
+  p-dialog img{
+    height: 100%;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  p-card p {
+    white-space: normal;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 200px; /* Adjust the minimum width as needed */
+    height: 50px; /* Set a fixed height for the card */
+    overflow: hidden; /* Hide any overflow */
+  }
+  .truncate-text {
+    display: block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .flex {
+    display: flex;
+  }
+  
+  .justify-content-end {
+    justify-content: flex-end;
+  }
+  
+  .gap-2 {
+    gap: 0.5rem; /* Adjust gap as needed */
+  }
+  
+  .mt-3 {
+    margin-top: 1rem; /* Adds space above the buttons */
+  }
+  
+  .globalButtons{
+    padding-top: 10px;
+    justify-content: flex-end;
+    display: flex;
+  }
+  
