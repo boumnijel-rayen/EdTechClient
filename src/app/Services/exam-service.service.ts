@@ -26,4 +26,9 @@ export class ExamServiceService {
     formData.append('file', file);
     return this.http.post<any>(`${this.baseUrl}/${examId}/upload`, formData);
   }
+
+  getDownloadLink(examId: number): Observable<string> {
+    return this.http.get(`${this.baseUrl}/${examId}/download-link`, { responseType: 'text' });
+  }
+
 }

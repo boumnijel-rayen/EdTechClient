@@ -47,6 +47,20 @@ export class MatiereExamsComponent implements OnInit {
     this.selectedExam = exam;
     this.deadlinePassed = new Date() > exam.deadline;
     this.display = true;
+    this.loadDownloadLink(exam.id);
+  }
+
+  loadDownloadLink(examId: number): void {
+    this.examService.getDownloadLink(examId).subscribe(
+      (downloadLink: string) => {
+        if (this.selectedExam) {
+          this.selectedExam.enonce = downloadLink;
+        }
+      },
+      error => {
+        console.error('Erreur lors de la récupération du lien de téléchargement :', error);
+      }
+    );
   }
 
   isDeadlinePassed(): boolean {
@@ -59,7 +73,7 @@ export class MatiereExamsComponent implements OnInit {
 
   submitWork(): void {
     if (this.file && this.selectedExam) {
-      const examId = this.selectedExam.id; // Suppression de la conversion en Number
+      const examId = this.selectedExam.id;
       this.examService.uploadWork(examId, this.file).subscribe(
         (response: any) => {
           this.selectedExam!.travail = response.fileUrl;
@@ -71,4 +85,5 @@ export class MatiereExamsComponent implements OnInit {
       );
     }
   }
+  
 }
