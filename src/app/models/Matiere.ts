@@ -1,4 +1,4 @@
-import { Examen } from './Examen';
+import { Examen } from'./Examen'; 
 import { Utilisateur } from './Utilisateur';
 
 export class Matiere {

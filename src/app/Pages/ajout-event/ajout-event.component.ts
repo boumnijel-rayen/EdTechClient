@@ -1,10 +1,10 @@
 import { UserServiceService } from './../../Services/user-service.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Evenement } from '../../Models/Evenement';
+import { Evenement } from '../../models/evenement';
 import { EventServiceService } from '../../Services/event-service.service';
 import { AuthServiceService } from '../../Services/auth-service.service';
-import { Utilisateur } from '../../Models/Utilisateur';
+import { Utilisateur } from '../../models/Utilisateur';
 import { UploadEvent } from 'primeng/fileupload';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 

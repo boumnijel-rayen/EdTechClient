@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ImportsModule } from '../imports';
-import { DemandeMenu } from '../Models/DemandeMenu';
-import { Menu } from '../Models/Menu';
-import { Repas } from '../Models/Repas';
+import { DemandeMenu } from '../models/DemandeMenu';
+import { Menu } from '../models/Menu';
+import { Repas } from '../models/Repas';
 import { RestaurationServiceService } from '../Services/restauration-service.service';
 
 @Component({

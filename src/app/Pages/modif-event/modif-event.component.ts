@@ -1,12 +1,12 @@
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Utilisateur } from '../../Models/Utilisateur';
+import { Utilisateur } from '../../models/Utilisateur';
 import { EventServiceService } from '../../Services/event-service.service';
 import { AuthServiceService } from '../../Services/auth-service.service';
 import { UploadEvent } from 'primeng/fileupload';
 import { UserServiceService } from '../../Services/user-service.service';
-import { Evenement } from '../../Models/Evenement';
+import { Evenement } from '../../models/evenement';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({

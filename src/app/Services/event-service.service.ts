@@ -1,9 +1,9 @@
-import { Evenement } from '../Models/Evenement';
+import { Evenement } from '../models/evenement';
 import { Observable } from 'rxjs';
 import { AuthServiceService } from './auth-service.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Utilisateur } from '../Models/Utilisateur';
+import { Utilisateur } from '../models/Utilisateur';
 
 @Injectable({
   providedIn: 'root'

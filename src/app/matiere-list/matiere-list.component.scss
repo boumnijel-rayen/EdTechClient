@@ -1,0 +1,98 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.page-title {
+  font-size: 2rem;.container {
+  max-width: 900px;
+  margin: 0 auto; /* Center the container horizontally */
+  margin-left: auto; /* Ensures full width */
+  margin-right: auto; /* Ensures full width */
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  width: 100%; /* Ensure grid container fills the available width */
+}
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  padding: 0.5rem;
+  background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.matiere-card {
+  background-color: #f0f8ff; /* Light blue color */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+  margin-bottom: 1rem;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.action-button {
+  width: 48%;
+}
+
+.p-dialog .p-fluid .p-field {
+  margin-bottom: 1rem;
+}
+
+.p-dialog .p-fluid .p-field label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.p-dialog .p-fluid .p-field input,
+.p-dialog .p-fluid .p-field textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.p-dialog .p-fluid .p-field button {
+  display: block;
+  width: 100%;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.p-dialog .p-fluid .p-field button:hover {
+  background-color: #0056b3;
+}
+
+.dialog-content {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-dialog .p-dialog-content {
+  padding: 1rem !important;
+}
+

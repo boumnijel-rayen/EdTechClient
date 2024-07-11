@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Repas } from '../Models/Repas';
+import { Repas } from '../models/Repas';
 import { RestaurationServiceService } from '../Services/restauration-service.service';
 
 @Component({

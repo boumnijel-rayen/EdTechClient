@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { RendezVous } from '../../Models/RendezVous';
-import { Utilisateur } from '../../Models/Utilisateur';
+import { RendezVous } from '../../models/RendezVous';
+import { Utilisateur } from '../../models/Utilisateur';
 import { RendezVousServiceService } from '../../Services/rendez-vous-service.service';
 
 @Component({

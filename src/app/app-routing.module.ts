@@ -13,6 +13,10 @@ import { StatsUserComponent } from './Pages/stats-user/stats-user.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { AjouterRepasComponent } from './ajouter-repas/ajouter-repas.component';
 import { ListRendezVousComponent } from './Pages/list-rendez-vous/list-rendez-vous.component';
+import { MatiereListComponent } from './matiere-list/matiere-list.component';
+import { MatiereExamsComponent } from './matiere-exams/matiere-exams.component';
+import { ListeMatiereEtudiantComponent } from './liste-matiere-etudiant/liste-matiere-etudiant.component';
+import { ListeMatiereEnsComponent } from './liste-matiere-ens/liste-matiere-ens.component';
 
 const routes: Routes = [
   {path: 'app', component: SidebarComponent, children: [
@@ -24,9 +28,15 @@ const routes: Routes = [
     {path: 'gestion-users', component: GestionUsersComponent},
     {path: 'Restaurant', component: RestaurantComponent},
     {path: 'AjouterRepas', component: AjouterRepasComponent},
-    { path: 'rdv-list', component: ListRendezVousComponent}
+    { path: 'rdv-list', component: ListRendezVousComponent},
+    {path: 'gestion-users', component: GestionUsersComponent},
+    { path: 'matieres', component: MatiereListComponent },
+    { path: 'matieres-etudiant', component: ListeMatiereEtudiantComponent },
+    { path: 'matieres/:id/exams', component: MatiereExamsComponent },
+    { path: 'matieres-ens', component: ListeMatiereEnsComponent },
   ]
-  },
+  }, 
+ 
   {path: 'login', component: LoginComponent, pathMatch: 'full'},
   {path: 'register', component: RegisterComponent, pathMatch: 'full'},
   {path: '', component: HomeComponent, pathMatch: 'full'},

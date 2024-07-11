@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Menu } from '../Models/Menu';
-import { Repas } from '../Models/Repas';  // Adjust the path as necessary
+import { Menu } from '../models/Menu';
+import { Repas } from '../models/Repas';  // Adjust the path as necessary
 import { AuthServiceService } from './auth-service.service';
 
 @Injectable({

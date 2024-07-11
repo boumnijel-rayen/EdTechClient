@@ -2,7 +2,7 @@ import { DatePipe } from '@angular/common';
 import { AuthServiceService } from '../../Services/auth-service.service';
 import { EventServiceService } from '../../Services/event-service.service';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Evenement } from '../../Models/Evenement';
+import { Evenement } from '../../models/evenement';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-list-event',
