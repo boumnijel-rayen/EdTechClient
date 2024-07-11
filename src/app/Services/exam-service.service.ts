@@ -15,11 +15,15 @@ export class ExamServiceService {
     return this.http.get<Examen[]>(`${this.baseUrl}/matiere/${matiereId}`);
   }
 
-  uploadWork(formData: FormData): Observable<any> {
-    return this.http.post(`${this.baseUrl}/uploadWork`, formData);
-  }
+  
 
   updateExam(id: number, examen: Examen): Observable<Examen> {  // Assurez-vous d'utiliser ExamenKey correctement
     return this.http.put<Examen>(`${this.baseUrl}/${id}`, examen);
+  }
+
+  uploadWork(examId: number, file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    return this.http.post<any>(`${this.baseUrl}/${examId}/upload`, formData);
   }
 }

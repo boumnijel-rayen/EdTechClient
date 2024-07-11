@@ -1,41 +1,38 @@
+<!-- src/app/components/matiere-exams/matiere-exams.component.html -->
+
 <div class="container mt-5">
   <h2 class="mb-4">Liste des Examens</h2>
   <div *ngIf="exams.length === 0">
     <p>Aucun examen disponible pour cette matière.</p>
   </div>
-  <div *ngIf="exams.length > 0">
-    <div class="row">
-      <div class="col-md-4 mb-4" *ngFor="let exam of exams">
-        <div class="card" (click)="openPopup(exam)">
-          <div class="card-body">
-            <h5 class="card-title">{{ exam.matiere.nom }}</h5>
-            <p class="card-text">{{ exam.description }}</p>
-            <p class="card-text">
-              <small class="text-muted">Date de deadline: {{ exam.deadline | date:'dd/MM/yyyy' }}</small>
-            </p>
-          </div>
+  <div *ngIf="exams.length > 0" class="row">
+    <div *ngFor="let exam of exams" class="col-md-4 mb-4">
+      <div class="card" (click)="openPopup(exam)">
+        <div class="card-body">
+          <h5 class="card-title">{{ exam.matiere.nom }}</h5>
+          <p class="card-text">{{ exam.description }}</p>
+          <p class="card-text">
+            <small class="text-muted">Date de deadline: {{ exam.deadline | date:'dd/MM/yyyy' }}</small>
+          </p>
         </div>
       </div>
     </div>
   </div>
 
   <p-dialog header="Détails de l'Examen" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '50vw'}">
-    <ng-container *ngIf="isDeadlinePassed(); else submitForm">
+    <div *ngIf="isDeadlinePassed()">
       <p class="text-danger">La date de deadline de cet examen est dépassée.</p>
-    </ng-container>
-    <ng-template #submitForm>
+    </div>
+    <div *ngIf="!isDeadlinePassed()">
       <div class="form-group">
         <label for="enonce">Enoncé:</label>
         <a [href]="selectedExam?.enonce" target="_blank">Télécharger l'enoncé</a>
       </div>
-      <br>
       <div class="form-group">
         <label for="travail">Travail:</label>
-        <br><br>
         <input type="file" class="form-control" id="travail" (change)="onFileChange($event)">
       </div>
-      <br>
       <button type="button" class="btn btn-primary" (click)="submitWork()">Soumettre</button>
-    </ng-template>
+    </div>
   </p-dialog>
 </div>

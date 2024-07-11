@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from'@angular/router' ;
+import { ActivatedRoute } from '@angular/router';
 import { Examen } from '../models/Examen';
 import { ExamServiceService } from '../Services/exam-service.service';
 import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-matiere-exams',
   templateUrl: './matiere-exams.component.html',
@@ -13,10 +14,12 @@ export class MatiereExamsComponent implements OnInit {
   selectedExam: Examen | null = null;
   display: boolean = false;
   deadlinePassed: boolean = false;
+  file: File | null = null;
 
   constructor(
     private route: ActivatedRoute,
-    private examenService: ExamServiceService
+    private examService: ExamServiceService,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -27,10 +30,10 @@ export class MatiereExamsComponent implements OnInit {
   }
 
   loadExams(idMatiere: number): void {
-    this.examenService.getExamsByMatiere(idMatiere).subscribe(
+    this.examService.getExamsByMatiere(idMatiere).subscribe(
       (data: Examen[]) => {
         this.exams = data.map(exam => {
-          exam.deadline = new Date(exam.deadline); // Conversion en instance de Date
+          exam.deadline = new Date(exam.deadline);
           return exam;
         });
       },
@@ -51,12 +54,21 @@ export class MatiereExamsComponent implements OnInit {
   }
 
   onFileChange(event: any): void {
-    const file = event.target.files[0];
-    // Handle file upload logic here
+    this.file = event.target.files[0];
   }
 
   submitWork(): void {
-    // Handle work submission logic here
-    this.display = false;
+    if (this.file && this.selectedExam) {
+      const examId = this.selectedExam.id; // Suppression de la conversion en Number
+      this.examService.uploadWork(examId, this.file).subscribe(
+        (response: any) => {
+          this.selectedExam!.travail = response.fileUrl;
+          this.display = false;
+        },
+        (error: any) => {
+          console.error('Erreur lors du téléchargement du fichier :', error);
+        }
+      );
+    }
   }
 }
