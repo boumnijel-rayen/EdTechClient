@@ -7,6 +7,9 @@
       <mat-error *ngIf="matiereForm.controls['nom'].hasError('required')">
         Nom est obligatoire
       </mat-error>
+      <mat-error *ngIf="matiereForm.controls['nom'].hasError('alphabetic')">
+        Nom doit contenir uniquement des lettres
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Description</mat-label>

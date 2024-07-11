@@ -34,6 +34,8 @@ import { MatiereListComponent } from './matiere-list/matiere-list.component';
 import { AddMatiereDialogComponent } from './add-matiere-dialog/add-matiere-dialog.component';
 import { MatiereExamsComponent } from './matiere-exams/matiere-exams.component';
 import { ListeMatiereEtudiantComponent } from './liste-matiere-etudiant/liste-matiere-etudiant.component';
+import { ListeMatiereEnsComponent } from './liste-matiere-ens/liste-matiere-ens.component';
+import { ExamenEnsComponent } from './examen-ens/examen-ens.component';
 
 
 @NgModule({
@@ -51,6 +53,8 @@ import { ListeMatiereEtudiantComponent } from './liste-matiere-etudiant/liste-ma
     AddMatiereDialogComponent,
     MatiereExamsComponent,
     ListeMatiereEtudiantComponent,
+    ListeMatiereEnsComponent,
+    ExamenEnsComponent,
   ],
   imports: [
     BrowserModule,

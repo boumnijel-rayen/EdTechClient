@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatiereServiceService } from '../Services/matiere-service.service';
+import { alphabeticValidator } from '../alphabeticValidator';
 
 @Component({
   selector: 'app-add-matiere-dialog',
@@ -17,7 +18,7 @@ export class AddMatiereDialogComponent {
     private dialogRef: MatDialogRef<AddMatiereDialogComponent>
   ) {
     this.matiereForm = this.fb.group({
-      nom: ['', Validators.required],
+      nom: ['', [Validators.required, alphabeticValidator()]],
       description: ['', Validators.required]
     });
   }

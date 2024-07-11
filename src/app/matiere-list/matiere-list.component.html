@@ -25,6 +25,10 @@
         <br>
         <br>
         <input id="nom" type="text" pInputText formControlName="nom">
+        <div *ngIf="editMatiereForm.get('nom')?.invalid && editMatiereForm.get('nom')?.touched" class="error">
+          <small *ngIf="editMatiereForm.get('nom')?.errors?.['required']">Le nom est requis.</small>
+          <small *ngIf="editMatiereForm.get('nom')?.errors?.['alphabetic']">Le nom doit contenir uniquement des lettres.</small>
+        </div>
       </div>
       <br>
       <div class="p-field">
@@ -32,10 +36,13 @@
         <br>
         <br>
         <textarea id="description" pInputTextarea formControlName="description"></textarea>
+        <div *ngIf="editMatiereForm.get('description')?.invalid && editMatiereForm.get('description')?.touched" class="error">
+          <small *ngIf="editMatiereForm.get('description')?.errors?.['required']">La description est requise.</small>
+        </div>
       </div>
       <br>
       <div class="p-field">
-        <button type="submit" pButton label="Enregistrer" class="submit-button"></button>
+        <button type="submit" pButton label="Enregistrer" class="submit-button" [disabled]="editMatiereForm.invalid"></button>
       </div>
     </div>
   </form>

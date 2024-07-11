@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatiereServiceService } from '../Services/matiere-service.service';
 import { Matiere } from '../models/Matiere';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddMatiereDialogComponent } from '../add-matiere-dialog/add-matiere-dialog.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { alphabeticValidator } from '../alphabeticValidator';
 
 @Component({
   selector: 'app-matiere-list',
@@ -12,7 +13,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./matiere-list.component.scss']
 })
 export class MatiereListComponent implements OnInit {
-   matieres: Matiere[] = [];
+  matieres: Matiere[] = [];
   displayEditDialog: boolean = false;
   selectedMatiere: Matiere | null = null;
   editMatiereForm: FormGroup;
@@ -24,9 +25,8 @@ export class MatiereListComponent implements OnInit {
     private router: Router
   ) {
     this.editMatiereForm = this.fb.group({
-      nom: ['', Validators.required],
+      nom: ['', [Validators.required, alphabeticValidator()]],
       description: ['', Validators.required],
-      // Ajoutez d'autres champs nécessaires ici
     });
   }
 
@@ -51,7 +51,6 @@ export class MatiereListComponent implements OnInit {
     this.editMatiereForm.patchValue({
       nom: matiere.nom,
       description: matiere.description,
-      // Ajoutez d'autres champs nécessaires ici
     });
     this.displayEditDialog = true;
   }
