@@ -42,4 +42,25 @@ export class UserService {
     });
     return this.http.get('http://localhost:8089/user/activer/' + id, {headers})
   }
+
+  userStatus(token: any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+    return this.http.get('http://localhost:8089/user/stats/userStatus', {headers})
+  }
+
+  validationsStats(token : any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+    return this.http.get('http://localhost:8089/user/stats/validStats', {headers})
+  }
+
+  creationStats(token : any){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+    return this.http.get('http://localhost:8089/user/stats/createStats', {headers})
+  }
 }
