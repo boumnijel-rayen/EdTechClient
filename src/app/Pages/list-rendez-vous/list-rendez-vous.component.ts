@@ -26,7 +26,7 @@ export class ListRendezVousComponent implements OnInit {
   enseignants: Utilisateur[] = [];
   selectedStudent: Utilisateur = new Utilisateur();
   selectedEnseignant: Utilisateur | null = null;
-  rendezVousForm: any | null = null;;
+  rendezVousForm: any | null = null;
   updateRdv: boolean = false;
 
 

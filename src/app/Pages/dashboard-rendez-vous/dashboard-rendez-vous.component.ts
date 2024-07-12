@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { RendezVousServiceService } from '../../Services/rendez-vous-service.service';
 
+interface StatusCount {
+  status: string;
+  count: number;
+  percentage: number;
+}
+
 @Component({
   selector: 'app-dashboard-rendez-vous',
   templateUrl: './dashboard-rendez-vous.component.html',
@@ -11,12 +17,19 @@ export class DashboardRendezVousComponent implements OnInit {
   options: any;
   totalRendezVous: any;
 
+  highestStatus: StatusCount = { status: '', count: 0, percentage: 0 };
+  lowestStatus: StatusCount = { status: '', count: 0, percentage: 0 };
+  highLowChartData: any;
+  highLowChartOptions: any;
+
   constructor(private rendezVousService: RendezVousServiceService) {}
 
   ngOnInit() {
     this.rendezVousService.getRendezVousCountByStatus().subscribe(response => {
       const statuses = Object.keys(response);
-      const counts = Object.values(response);
+      const counts = Object.values(response) as number[];
+
+      this.totalRendezVous = counts.reduce((acc, count) => acc + count, 0);
 
       this.data = {
         labels: statuses,
@@ -28,9 +41,6 @@ export class DashboardRendezVousComponent implements OnInit {
           }
         ]
       };
-      this.rendezVousService.getTotalRendezVousCount().subscribe(totalCount => {
-      this.totalRendezVous = totalCount;
-      });
 
       this.options = {
         responsive: true,
@@ -54,6 +64,50 @@ export class DashboardRendezVousComponent implements OnInit {
           }
         }
       };
+
+      this.calculateStatusCounts(statuses, counts);
     });
+  }
+
+  calculateStatusCounts(statuses: string[], counts: number[]): void {
+    const sortedIndexes = counts.map((count, index) => index).sort((a, b) => counts[b] - counts[a]);
+    const highestIndex = sortedIndexes[0];
+    const lowestIndex = sortedIndexes[sortedIndexes.length - 1];
+
+    this.highestStatus = {
+      status: statuses[highestIndex],
+      count: counts[highestIndex],
+      percentage: (counts[highestIndex] / this.totalRendezVous) * 100
+    };
+
+    this.lowestStatus = {
+      status: statuses[lowestIndex],
+      count: counts[lowestIndex],
+      percentage: (counts[lowestIndex] / this.totalRendezVous) * 100
+    };
+
+    this.highLowChartData = {
+      labels: [this.highestStatus.status, this.lowestStatus.status],
+      datasets: [
+        {
+          data: [this.highestStatus.count, this.lowestStatus.count],
+          backgroundColor: ['#36A2EB', '#FF6384']
+        }
+      ]
+    };
+
+    this.highLowChartOptions = {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom'
+        },
+        title: {
+          display: true,
+          text: 'Highest and Lowest Rendez-Vous Status'
+        }
+      }
+    };
   }
 }
