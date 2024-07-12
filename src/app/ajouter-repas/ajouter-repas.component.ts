@@ -21,7 +21,6 @@ export class AjouterRepasComponent {
       poidsCarbs: [null, [Validators.required, Validators.pattern("^[0-9]*$")]],
       poidsProteines: [null, [Validators.required, Validators.pattern("^[0-9]*$")]],
       poidsFats: [null, [Validators.required, Validators.pattern("^[0-9]*$")]],
-      image: [null]
     });
 
 

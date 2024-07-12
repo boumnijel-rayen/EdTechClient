@@ -14,13 +14,13 @@ export class Utilisateur {
   prenom!: string;
   email!: string;
   password!: string;
-  roles!: Set<Role>;
-  examens!: Set<Examen>;
-  absences!: Set<Absence>;
-  matieres!: Set<Matiere>;
-  classe!: Classe;
-  RendezvousValides!: Set<RendezVous>;
-  RendezvousPasses!: Set<RendezVous>;
-  demandesMenu!: Set<DemandeMenu>;
-  reunions!: Set<ParticipationReunion>;
+  roles!: Set<Role>|undefined;
+  examens!: Set<Examen>|undefined;
+  absences!: Set<Absence>|undefined;
+  matieres!: Set<Matiere>|undefined;
+  classe!: Classe|undefined;
+  RendezvousValides!: Set<RendezVous>|undefined;
+  RendezvousPasses!: Set<RendezVous>|undefined;
+  demandesMenu!: Set<DemandeMenu>|undefined;
+  reunions!: Set<ParticipationReunion>|undefined;
 }

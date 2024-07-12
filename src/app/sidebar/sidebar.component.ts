@@ -71,7 +71,7 @@ export class SidebarComponent {
               root: true
           }
       ];
-  }
+    }
 
   sidebarVisible: boolean = false;
 

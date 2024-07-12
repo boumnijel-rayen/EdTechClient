@@ -18,6 +18,7 @@ import { MatiereListComponent } from './matiere-list/matiere-list.component';
 import { MatiereExamsComponent } from './matiere-exams/matiere-exams.component';
 import { ListeMatiereEtudiantComponent } from './liste-matiere-etudiant/liste-matiere-etudiant.component';
 import { ListeMatiereEnsComponent } from './liste-matiere-ens/liste-matiere-ens.component';
+import { StaticRepasComponent } from './static-repas/static-repas.component';
 
 const routes: Routes = [
   {path: 'app', redirectTo: 'app/list-event' },
@@ -38,6 +39,8 @@ const routes: Routes = [
     { path: 'matieres-etudiant', component: ListeMatiereEtudiantComponent },
     { path: 'matieres/:id/exams', component: MatiereExamsComponent },
     { path: 'matieres-ens', component: ListeMatiereEnsComponent },
+    {path: 'StaticRepas', component: StaticRepasComponent},
+
   ]
   }, 
  

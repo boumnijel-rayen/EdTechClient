@@ -8,13 +8,6 @@
         (dragstart)="dragStart($event, product)"
         (dragend)="dragEnd()"
       >
-        <div class="image-container">
-          <img
-            src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product.nom }}"
-            [alt]="product.nom"
-            class="product-image"
-          />
-        </div>
         <div class="product-list-detail">
           <h5 class="mb-2">
             {{ product.nom }}

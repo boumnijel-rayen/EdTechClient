@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="input-group mb-3">
+      <input type="date" class="form-control" [(ngModel)]="selectedDate" placeholder="Select Date">
+      <div class="input-group-append">
+        <button class="btn btn-primary" (click)="showGraph()">Show Graph</button>
+      </div>
+    </div>
+  
+    <div *ngIf="chartData">
+      <p-chart type="bar" [data]="chartData" [options]="chartOptions"></p-chart>
+    </div>
+  </div>

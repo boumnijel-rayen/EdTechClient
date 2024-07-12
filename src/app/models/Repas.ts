@@ -8,6 +8,6 @@ export class Repas {
   poidsCarbs!: number;
   poidsProteines!: number;
   poidsFats!: number;
-  image: Uint8Array | undefined;
+  image: string | undefined;
   menus: Set<Menu> | undefined;
 }

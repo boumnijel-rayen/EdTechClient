@@ -82,6 +82,11 @@ import { ListeMatiereEtudiantComponent } from './liste-matiere-etudiant/liste-ma
 import { ListeMatiereEnsComponent } from './liste-matiere-ens/liste-matiere-ens.component';
 import { ExamenEnsComponent } from './examen-ens/examen-ens.component';
 import { StatsEventComponent } from './Pages/stats-event/stats-event.component';
+// import { MultiSelectModule } from 'primeng/multiselect';
+// import { RestaurantComponent } from './restaurant/restaurant.component';
+// import { AjouterRepasComponent } from './ajouter-repas/ajouter-repas.component';
+import { StaticRepasComponent } from './static-repas/static-repas.component';
+// import { ChartModule } from 'primeng/chart';
 
 
 @NgModule({
@@ -108,6 +113,11 @@ import { StatsEventComponent } from './Pages/stats-event/stats-event.component';
     ListeMatiereEnsComponent,
     ExamenEnsComponent,
     StatsEventComponent,
+    StaticRepasComponent,
+
+    
+    
+    
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -163,6 +173,7 @@ import { StatsEventComponent } from './Pages/stats-event/stats-event.component';
     ButtonModule,
     ScrollPanelModule,
     TableModule,
+    ChartModule,
      RouterModule.forRoot([
       { path: 'restaurant', component: RestaurantComponent }
     ])
