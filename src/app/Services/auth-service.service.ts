@@ -71,4 +71,12 @@ export class AuthServiceService {
   deleteEmail(): void {
     this.cookieService.delete('email_connected', '/');
   }
+
+  sendToken():any{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.getToken()}`,
+    });
+    return headers;
+  }
+
 }
