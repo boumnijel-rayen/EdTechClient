@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit{
   resEmail : any;
   invalidLogin :any
   userConn:any
+  test:any
   constructor(private builder : FormBuilder, private router : Router, private auth : AuthServiceService, private user : UserService) {
     this.myForm = this.builder.group({
       email : ['', [Validators.required, Validators.email]],
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit{
         if (error.status == 423){
           this.invalidLogin = false;
           this.auth.setEmail(this.myForm.value.email)
+          this.test = true
           this.router.navigate(['/confirm']);
         }else{
           console.log(error);
@@ -50,7 +52,8 @@ export class LoginComponent implements OnInit{
 
       },
     ).add(() => {
-      console.log(this.auth.getEmail())
+      if (!this.test){
+        console.log(this.auth.getEmail())
       console.log(this.auth.getToken())
       this.user.GetUser(this.auth.getEmail(), this.auth.getToken()).subscribe((data : any) => {
         this.userConn = data
@@ -65,7 +68,9 @@ export class LoginComponent implements OnInit{
         }else{
           this.router.navigate(['/app/list-event']);
         }
-    })
+      })
+      }
+      
     });
   }
 }
