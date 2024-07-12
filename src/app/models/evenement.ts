@@ -2,7 +2,9 @@ export class Evenement {
   id!: number;
   nom!: string;
   description!: string;
-  date!: Date;
+  dateDeb!: Date;
+  dateFin!: Date;
+  annulation : boolean =false;
   image : any;
 
   getImage(): string {

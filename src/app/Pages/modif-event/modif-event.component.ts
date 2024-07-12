@@ -32,7 +32,8 @@ export class ModifEventComponent {
       id: [],
       nom: ['', Validators.required],
       description: ['', Validators.required],
-      date: [null, Validators.required],  // PrimeNG Calendar uses null for no date
+      dateDeb: [null, Validators.required],  // PrimeNG Calendar uses null for no date
+      dateFin: [null, Validators.required],
       organisateurs:[[],Validators.required],
       image : [null]
     });
@@ -54,9 +55,10 @@ export class ModifEventComponent {
       let event : any ={
         id : this.evenementForm.controls['id'].value,
         nom : this.evenementForm.controls['nom'].value,
-         date : this.evenementForm.controls['date'].value,
-         description: this.evenementForm.controls['description'].value,
-         image : this.evenementForm.controls['image'].value
+        dateDeb : this.evenementForm.controls['dateDeb'].value,
+        dateFin : this.evenementForm.controls['dateFin'].value,
+        description: this.evenementForm.controls['description'].value,
+        image : this.evenementForm.controls['image'].value
 
       };
       console.log(event)
@@ -104,7 +106,8 @@ loadEventData(idEvent : any) {
       id: event.id,
       nom: event.nom,
       description: event.description,
-      date: new Date(event.date),
+      dateDeb: new Date(event.dateDeb),
+      dateFin: new Date(event.dateDeb)
     });
   });
   this.eventService.getEquipeOrgByEventId(idEvent).subscribe((orgs : any)=>{

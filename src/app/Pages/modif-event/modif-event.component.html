@@ -19,10 +19,17 @@
       </div>
       <br>
       <div class="p-field">
-        <label for="date">Date</label>
-        <p-calendar id="date" formControlName="date" dateFormat="dd/mm/yy"></p-calendar>
-        <div *ngIf="evenementForm.controls['date'].invalid && evenementForm.controls['date'].touched" class="p-error">
-          Date est obligatoire.
+        <label for="dateDeb">Date début</label>
+        <p-calendar id="dateDeb" formControlName="dateDeb" dateFormat="dd/mm/yy"></p-calendar>
+        <div *ngIf="evenementForm.controls['dateDeb'].invalid && evenementForm.controls['dateDeb'].touched" class="p-error">
+          Date début est obligatoire.
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="dateFin">Date fin</label>
+        <p-calendar id="dateFin" formControlName="dateFin" dateFormat="dd/mm/yy"></p-calendar>
+        <div *ngIf="evenementForm.controls['dateFin'].invalid && evenementForm.controls['dateFin'].touched" class="p-error">
+          Date fin est obligatoire.
         </div>
       </div>
       <br>

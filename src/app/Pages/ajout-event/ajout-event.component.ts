@@ -1,6 +1,6 @@
 import { UserServiceService } from './../../Services/user-service.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Evenement } from '../../models/evenement';
 import { EventServiceService } from '../../Services/event-service.service';
 import { AuthServiceService } from '../../Services/auth-service.service';
@@ -22,17 +22,19 @@ export class AjoutEventComponent implements OnInit {
   image: any;
   imageError: string | null = null;
   messageService: any;
+  dateFinInferieur : boolean =false;
   constructor(private fb: FormBuilder, private eventService : EventServiceService, private auth : AuthServiceService,private userService :UserServiceService) {
     // Initialize the form group with default values and validators
     this.evenementForm = this.fb.group({
       id: [{ value: 0, disabled: true }], // ID is typically not editable
       nom: ['', Validators.required],
       description: ['', Validators.required],
-      date: [null, Validators.required],  // PrimeNG Calendar uses null for no date
+      dateDeb: [null, Validators.required],  // PrimeNG Calendar uses null for no date
+      dateFin: [null, Validators.required],
       organisateurs:[[],Validators.required],
       image : [null]
-    });
-
+    }
+  );
     userService.getUsers().subscribe(
       (data : Utilisateur[]) => {
         console.log(data);
@@ -42,6 +44,7 @@ export class AjoutEventComponent implements OnInit {
     );
   }
 
+
   ngOnInit(): void {}
 
   // Method to handle form submission
@@ -50,10 +53,10 @@ export class AjoutEventComponent implements OnInit {
       let organisateurs = this.evenementForm.controls['organisateurs'].value;
       let event : any ={
         nom : this.evenementForm.controls['nom'].value,
-         date : this.evenementForm.controls['date'].value,
+         dateDeb : this.evenementForm.controls['dateDeb'].value,
+         dateFin : this.evenementForm.controls['dateFin'].value,
          description: this.evenementForm.controls['description'].value,
          image : this.evenementForm.controls['image'].value
-
       };
       console.log(event)
       this.eventService.ajouterEvent(event).subscribe((data : any) => {
@@ -72,7 +75,7 @@ export class AjoutEventComponent implements OnInit {
       })
 
 
-      this.eventAdded.emit(event);
+      //this.eventAdded.emit(event);
     }
     this.evenementForm.reset();
   }
