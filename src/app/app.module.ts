@@ -25,14 +25,14 @@ import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { ToolbarModule } from 'primeng/toolbar';
 // import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from'@angular/platform-browser'; 
+import { BrowserModule, provideClientHydration } from'@angular/platform-browser';
 // import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
-import { MatDialogModule } from'@angular/material/dialog'; 
-import { MatButtonModule } from'@angular/material/button'; 
-import { MatInputModule } from'@angular/material/input'; 
-import { MatFormFieldModule } from'@angular/material/form-field'; 
+import { MatDialogModule } from'@angular/material/dialog';
+import { MatButtonModule } from'@angular/material/button';
+import { MatInputModule } from'@angular/material/input';
+import { MatFormFieldModule } from'@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.component';
@@ -62,7 +62,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { HomeComponent } from './Home/home/home.component';
 // import { RouterModule } from '@angular/router';
 // import { SidebarModule } from 'primeng/sidebar';
-// import { BrowserAnimationsModule } from'@angular/platform-browser/animations'; 
+// import { BrowserAnimationsModule } from'@angular/platform-browser/animations';
 // import { SplitterModule } from 'primeng/splitter';
 import {Avatar, AvatarModule} from 'primeng/avatar';
 // import { MegaMenuModule } from 'primeng/megamenu';
@@ -81,6 +81,7 @@ import { MatiereExamsComponent } from './matiere-exams/matiere-exams.component';
 import { ListeMatiereEtudiantComponent } from './liste-matiere-etudiant/liste-matiere-etudiant.component';
 import { ListeMatiereEnsComponent } from './liste-matiere-ens/liste-matiere-ens.component';
 import { ExamenEnsComponent } from './examen-ens/examen-ens.component';
+import { StatsEventComponent } from './Pages/stats-event/stats-event.component';
 
 
 @NgModule({
@@ -106,6 +107,7 @@ import { ExamenEnsComponent } from './examen-ens/examen-ens.component';
     ListeMatiereEtudiantComponent,
     ListeMatiereEnsComponent,
     ExamenEnsComponent,
+    StatsEventComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -135,7 +137,7 @@ import { ExamenEnsComponent } from './examen-ens/examen-ens.component';
     FileUploadModule,
     ToastModule,
     ChartModule,
-    RestaurantComponent,  
+    RestaurantComponent,
     TagModule,
     ConfirmDialogModule,
     ToolbarModule,
@@ -164,7 +166,7 @@ import { ExamenEnsComponent } from './examen-ens/examen-ens.component';
      RouterModule.forRoot([
       { path: 'restaurant', component: RestaurantComponent }
     ])
-    
+
   ],
   providers: [
     CookieService,

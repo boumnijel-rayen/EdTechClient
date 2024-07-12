@@ -8,6 +8,7 @@ import { UploadEvent } from 'primeng/fileupload';
 import { UserServiceService } from '../../Services/user-service.service';
 import { Evenement } from '../../models/evenement';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-modif-event',
@@ -95,10 +96,31 @@ export class ModifEventComponent {
 
 
 ngOnInit(): void {
-
   this.loadEventData(this.activeRoute.snapshot.paramMap.get('id'));
+  this.evenementForm.valueChanges.subscribe(() => {
+    this.checkDateRange();
+  });
 }
+checkDateRange(): void {
+  const today = formatDate(new Date(), 'yyyy/MM/dd', 'en');
+  console.log(today)
+  const dateDeb =  formatDate(this.evenementForm.get('dateDeb')?.value, 'yyyy/MM/dd', 'en');
+  const dateFin = formatDate(this.evenementForm.get('dateFin')?.value, 'yyyy/MM/dd', 'en');
+  console.log(dateDeb)
+  console.log(dateFin)
+  if (dateDeb < today){
+    this.evenementForm.get('dateDeb')?.setErrors({ dateDebError: true });
+  }
+  else{
+    this.evenementForm.get('dateDeb')?.setErrors(null);
+  }
+  if ( dateDeb > dateFin) {
+    this.evenementForm.get('dateFin')?.setErrors({ dateRange: true });
+  } else {
+    this.evenementForm.get('dateFin')?.setErrors(null);
+  }
 
+}
 loadEventData(idEvent : any) {
   this.eventService.getEventById(idEvent).subscribe((event: Evenement) => {
     console.log(event)

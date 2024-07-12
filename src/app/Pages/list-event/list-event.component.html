@@ -2,23 +2,25 @@
   <p-button  label="Ajouter Evenement" [text]="true" [raised]="true" icon="pi pi-plus" (click)="showAjout()"/>
   </div>
   <div class="grid-container">
-    <p-card *ngFor="let event of events ; let i = index" [header]="event.nom" >
+    <p-card *ngFor="let event of events ; let i = index"  >
+      <header [style]="{ width: '100%', height: '20px'}">
+       <b> {{event.nom}}</b>
+      </header>
       <sub-header>
         Du {{event.dateDeb.toString()}} au {{event.dateFin.toString()}}
       </sub-header>
       <ng-template pTemplate="header">
         <img alt="Card" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" />
      </ng-template>
+
       <div class="card-content">
-        <p-scrollPanel [style]="{ width: '100%', height: '75px' }">
+        <p-scrollPanel [style]="{ width: '100%', height: '75px'}">
+          <div *ngIf="event.annulation" class="inline-tag">
+            <p-tag severity="danger">Annulée</p-tag>
+          </div>
          <p>
            {{ event.description }}
          </p>
-         <div *ngIf="event.annulation">
-          <p>
-            Annulée
-          </p>
-         </div>
         </p-scrollPanel>
       </div>
         <p-button label="En savoir plus ... " [link]="true" (click)="showDialog(i)"/>
@@ -27,6 +29,9 @@
   <p-dialog header="Evenement Détail" [(visible)]="displayDialog" modal="true" [style]="{width: '50vw'}">
     <img alt="Card" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg" />
     <h3>{{ titre }}</h3>
+    <div *ngIf="this.annulation" class="inline-tag">
+      <p-tag severity="danger">Annulée</p-tag>
+    </div>
     <p>Du {{ dateDeb }} au {{dateFin}}</p>
     <p>{{ selectedCardContent }}</p>
     <h5>Equipe Organisation :</h5>
@@ -34,9 +39,12 @@
       <p>{{ org.nom }} {{ org.prenom }}</p>
     </div>
     <div class="flex justify-content-end">
-      <div *ngIf="isOrganisateur">
-        <p-button label="Modifier" severity="secondary" (click)="goModif()"/>
-        <p-button label="Annuler" severity="danger" (click)="annulerEvent()"/>
+      <div *ngIf="!this.annulation">
+        <div *ngIf="isOrganisateur">
+          <p-button label="Modifier" severity="secondary" (click)="goModif()"/>
+          <p-button label="Annuler" severity="danger" (click)="annulerEvent(this.cardIndex)"/>
+        </div>
+        <p-button label="Je Participe" severity="primary" (click)="ajouterParticipant()"/>
       </div>
     </div>
   </p-dialog>

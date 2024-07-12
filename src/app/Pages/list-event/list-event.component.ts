@@ -33,13 +33,16 @@ export class ListEventComponent {
   organisateurs !: Utilisateur[];
   isOrganisateur : boolean = false;
   connectedUser !:Utilisateur;
+  cardIndex !: number;
+  annulation !:boolean;
   showDialog(cardIndex: number) {
     this.selectedId = this.events[cardIndex].id;
     this.selectedCardContent = this.events[cardIndex].description;
     this.titre = this.events[cardIndex].nom;
     this.dateDeb = this.events[cardIndex].dateDeb;
     this.dateFin = this.events[cardIndex].dateFin;
-
+    this.cardIndex = cardIndex;
+    this.annulation = this.events[cardIndex].annulation;
     // Fetch organisateurs for the selected event
     this.eventService.getEquipeOrgByEventId(this.selectedId).subscribe((orgs: any) => {
       this.organisateurs = orgs;
@@ -73,18 +76,26 @@ export class ListEventComponent {
     this.router.navigate(['/app/modif-event/', this.selectedId]); // Programmatic navigation
   }
 
-  annulerEvent(){
-    console.log(this.selectedId)
-    this.eventService.annulerEvent(this.selectedId).subscribe((data : any)=>
+  annulerEvent(cardIndex : number){
+    console.log(cardIndex)
+    this.eventService.annulerEvent(this.events[cardIndex]).subscribe((data : any)=>
     {
       console.log(data);
     })
-    //window.location.reload();
+   window.location.reload();
   }
 
   organisateurExists(email: string): boolean {
       return this.organisateurs.some(org => org.email === email);
   }
 
+  ajouterParticipant(){
+    console.log(this.selectedId);
+    console.log(this.events[this.cardIndex]);
+    this.eventService.ajouterParticipant(this.selectedId,this.connectedUser).subscribe((data : any)=>
+      {
+        console.log(data);
+      })
+  }
 
 }

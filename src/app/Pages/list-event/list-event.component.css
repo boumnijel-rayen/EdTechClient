@@ -55,3 +55,12 @@ p-card p {
   justify-content: flex-end;
   display: flex;
 }
+
+
+.sub-header {
+  font-size: 0.875rem;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+}
+

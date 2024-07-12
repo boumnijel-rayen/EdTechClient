@@ -7,6 +7,7 @@ import { AuthServiceService } from '../../Services/auth-service.service';
 import { Utilisateur } from '../../models/Utilisateur';
 import { UploadEvent } from 'primeng/fileupload';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-ajout-event',
@@ -29,12 +30,14 @@ export class AjoutEventComponent implements OnInit {
       id: [{ value: 0, disabled: true }], // ID is typically not editable
       nom: ['', Validators.required],
       description: ['', Validators.required],
-      dateDeb: [null, Validators.required],  // PrimeNG Calendar uses null for no date
+      dateDeb: [null, Validators.required],
       dateFin: [null, Validators.required],
       organisateurs:[[],Validators.required],
       image : [null]
     }
   );
+
+
     userService.getUsers().subscribe(
       (data : Utilisateur[]) => {
         console.log(data);
@@ -44,8 +47,32 @@ export class AjoutEventComponent implements OnInit {
     );
   }
 
+  ngOnInit(): void {
+    this.evenementForm.valueChanges.subscribe(() => {
+      this.checkDateRange();
+    });
+  }
+  checkDateRange(): void {
+    const today = formatDate(new Date(), 'yyyy/MM/dd', 'en');
+    console.log(today)
+    const dateDeb =  formatDate(this.evenementForm.get('dateDeb')?.value, 'yyyy/MM/dd', 'en');
+    const dateFin = formatDate(this.evenementForm.get('dateFin')?.value, 'yyyy/MM/dd', 'en');
+    console.log(dateDeb)
+    console.log(dateFin)
+    if (dateDeb < today){
+      this.evenementForm.get('dateDeb')?.setErrors({ dateDebError: true });
+    }
+    else{
+      this.evenementForm.get('dateDeb')?.setErrors(null);
+    }
+    if ( dateDeb > dateFin) {
+      this.evenementForm.get('dateFin')?.setErrors({ dateRange: true });
+    } else {
+      this.evenementForm.get('dateFin')?.setErrors(null);
+    }
 
-  ngOnInit(): void {}
+  }
+
 
   // Method to handle form submission
   onSubmit() {

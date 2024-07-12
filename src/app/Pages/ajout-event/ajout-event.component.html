@@ -21,17 +21,25 @@
       <div class="p-field">
         <label for="dateDeb">Date début</label>
         <p-calendar id="dateDeb" formControlName="dateDeb" dateFormat="dd/mm/yy"></p-calendar>
-        <div *ngIf="evenementForm.controls['dateDeb'].invalid && evenementForm.controls['dateDeb'].touched" class="p-error">
+        <div *ngIf="evenementForm.controls['dateDeb'].errors?.['requiered'] && evenementForm.controls['dateDeb'].touched" class="p-error">
           Date début est obligatoire.
         </div>
+        <div *ngIf="evenementForm.controls['dateDeb'].errors?.['dateDebError']" class="p-error">
+          Date début doit être supérieure à la date du jour
+        </div>
       </div>
+      <br>
       <div class="p-field">
         <label for="dateFin">Date fin</label>
         <p-calendar id="dateFin" formControlName="dateFin" dateFormat="dd/mm/yy"></p-calendar>
-        <div *ngIf="evenementForm.controls['dateFin'].invalid && evenementForm.controls['dateFin'].touched" class="p-error">
+        <div *ngIf="evenementForm.controls['dateFin'].errors?.['requiered'] && evenementForm.controls['dateFin'].touched" class="p-error">
           Date fin est obligatoire.
         </div>
+        <div *ngIf="evenementForm.controls['dateFin'].errors?.['dateRange']" class="p-error">
+          Date fin doit être supérieure à la date début
+        </div>
       </div>
+
       <br>
       <div class="p-field">
         <label for="organisateurs">Equipe organisation</label>

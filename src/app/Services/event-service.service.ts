@@ -55,16 +55,21 @@ export class EventServiceService {
         console.log(this.auth.getToken())
         return this.http.put("http://localhost:8089/event/update",event,{headers});
       }
-      annulerEvent(idEvent : number){
+      annulerEvent(Event : any){
             const headers = this.auth.sendToken();
             console.log(headers)
-            console.log(idEvent)
-            return this.http.put("http://localhost:8089/event/cancel/"+idEvent,{headers});
+            console.log(Event)
+            return this.http.put("http://localhost:8089/event/cancel",Event,{headers});
           }
       modifierEquipeOrg(idEvent : any, utilisateurs:any){
         const headers = this.auth.sendToken();
         console.log(this.auth.getToken())
         return this.http.put("http://localhost:8089/event/updateOrgTeam/"+idEvent,utilisateurs,{headers});
+      }
+      ajouterParticipant(event : any, user:any){
+        const headers = this.auth.sendToken();
+        console.log(this.auth.getToken())
+        return this.http.post("http://localhost:8089/event/addParticipant/"+event,user,{headers});
       }
 
 }
