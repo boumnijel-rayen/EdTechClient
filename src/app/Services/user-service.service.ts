@@ -15,4 +15,10 @@ export class UserServiceService {
     console.log(this.auth.getToken())
     return this.http.get<Utilisateur[]>("http://localhost:8089/user/getall",{headers});
   }
+  FindUserByMail(mail: string): Observable<Utilisateur> {
+    const headers = this.auth.sendToken();
+    console.log(this.auth.getToken());
+    const url = `http://localhost:8089/user/GetMail/${mail}`;
+    return this.http.get<Utilisateur>(url, { headers });
+  }
 }

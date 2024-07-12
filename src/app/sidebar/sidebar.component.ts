@@ -14,7 +14,6 @@ export class SidebarComponent {
   @ViewChild('sidebarRef') sidebarRef!: Sidebar;
 
   items: MegaMenuItem[] | undefined;
-
   constructor(private auth : AuthServiceService, private router : Router){}
 
   ngOnInit() {
@@ -66,7 +65,7 @@ export class SidebarComponent {
               root: true
           }
       ];
-  }
+    }
 
   sidebarVisible: boolean = false;
 

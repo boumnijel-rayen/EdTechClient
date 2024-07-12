@@ -10,6 +10,7 @@ import { GestionUsersComponent } from './Pages/gestion-users/gestion-users.compo
 import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.component';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { AjouterRepasComponent } from './ajouter-repas/ajouter-repas.component';
+import { StaticRepasComponent } from './static-repas/static-repas.component';
 
 const routes: Routes = [
   {path: 'app', redirectTo: 'app/list-event'},
@@ -18,7 +19,8 @@ const routes: Routes = [
     {path: 'ajout-event', component: AjoutEventComponent},
     {path: 'gestion-users', component: GestionUsersComponent},
     {path: 'Restaurant', component: RestaurantComponent},
-    {path: 'AjouterRepas', component: AjouterRepasComponent}
+    {path: 'AjouterRepas', component: AjouterRepasComponent},
+    {path: 'StaticRepas', component: StaticRepasComponent},
 
   ]
   },

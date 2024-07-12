@@ -29,4 +29,10 @@ export class RestaurationServiceService {
     console.log(this.auth.getToken())
     return this.http.post<Menu>("http://localhost:8089/menus/addmenu", menu,{headers});
   }
+
+  getRepasByDate(date: string): Observable<Repas[]> {
+    const headers = this.auth.sendToken();
+    console.log(this.auth.getToken())
+    return this.http.get<Repas[]>(`http://localhost:8089/menus/GetAllRepasUsed/${date}`,{headers});
+  }
 }

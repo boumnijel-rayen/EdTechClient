@@ -29,6 +29,8 @@ import { ConfirmAccountComponent } from './Home/confirm-account/confirm-account.
 import { MultiSelectModule } from 'primeng/multiselect';
 import { RestaurantComponent } from './restaurant/restaurant.component';
 import { AjouterRepasComponent } from './ajouter-repas/ajouter-repas.component';
+import { StaticRepasComponent } from './static-repas/static-repas.component';
+import { ChartModule } from 'primeng/chart';
 
 
 @NgModule({
@@ -43,6 +45,9 @@ import { AjouterRepasComponent } from './ajouter-repas/ajouter-repas.component';
     GestionUsersComponent,
     ConfirmAccountComponent,
     AjouterRepasComponent,
+    StaticRepasComponent,
+    StaticRepasComponent
+
     
     
     
@@ -72,7 +77,9 @@ import { AjouterRepasComponent } from './ajouter-repas/ajouter-repas.component';
     RestaurantComponent,   
      RouterModule.forRoot([
       { path: 'restaurant', component: RestaurantComponent }
-    ])
+    ]),
+    ChartModule
+
     
   ],
   providers: [
