@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { endTimeValidator, startTimeValidator } from '../../../app/custom-validators';
 import { RendezVous } from '../../Models/RendezVous';
 import { Utilisateur } from '../../Models/Utilisateur';
 import { RendezVousServiceService } from '../../Services/rendez-vous-service.service';
@@ -25,7 +26,7 @@ export class ListRendezVousComponent implements OnInit {
   enseignants: Utilisateur[] = [];
   selectedStudent: Utilisateur = new Utilisateur();
   selectedEnseignant: Utilisateur | null = null;
-  rendezVousForm: FormGroup;
+  rendezVousForm: any | null = null;;
   updateRdv: boolean = false;
 
 
@@ -39,13 +40,13 @@ export class ListRendezVousComponent implements OnInit {
   ) {
     this.rendezVousForm = this.fb.group({
       id: [{ value: 0, disabled: true }],
-      startTime: [null, Validators.required],
+      startTime: [null, [Validators.required, startTimeValidator()]],
       endTime: [null, Validators.required],
-      //statut: ['', Validators.required],
       validateur: [null, Validators.required],
       etudiant: [null, Validators.required],
       statut: [null]
     });
+     this.rendezVousForm.get('endTime').setValidators([Validators.required, endTimeValidator(this.rendezVousForm.get('startTime'))]);
   }
 
   ngOnInit(): void {
@@ -104,6 +105,7 @@ export class ListRendezVousComponent implements OnInit {
     this.rendezVous = { ...rendezVous };
     this.selectedStudent = rendezVous.etudiant;
     this.selectedEnseignant = rendezVous.validateur;
+
     this.rendezVousForm.patchValue({
       id: rendezVous.id,
       startTime: rendezVous.startTime,
@@ -122,7 +124,19 @@ export class ListRendezVousComponent implements OnInit {
 
   saveRendezVous(): void {
     if (this.rendezVousForm.valid) {
+      const now = new Date();
+      const startTime = new Date(this.rendezVousForm.controls['startTime'].value);
+      const endTime = new Date(this.rendezVousForm.controls['endTime'].value);
 
+      if (startTime < now) {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Start time cannot be in the past.' });
+        return;
+      }
+
+      if (endTime <= startTime) {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'End time cannot be before start time.' });
+        return;
+      }
       this.rendezVous.startTime = this.rendezVousForm.controls['startTime'].value;
       this.rendezVous.endTime = this.rendezVousForm.controls['endTime'].value;
       let valideur : any = { id : this.rendezVousForm.controls['validateur'].value };

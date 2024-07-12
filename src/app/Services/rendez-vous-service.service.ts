@@ -15,26 +15,46 @@ export class RendezVousServiceService {
   private apiUrl2 = 'http://localhost:8089/user';
 
   getAllRendezVous(): Observable<RendezVous[]> {
-    return this.http.get<RendezVous[]>(`${this.apiUrl}/getall`);
+    const headers = this.auth.sendToken();
+    console.log(this.auth.getToken())
+    return this.http.get<RendezVous[]>(`${this.apiUrl}/getall`,{headers});
   }
   addRendezVous(rendezVous: any): Observable<any>{
+    const headers = this.auth.sendToken();
+    console.log(this.auth.getToken())
     console.log('Adding RendezVous:', rendezVous);
-    return this.http.post(`${this.apiUrl}/save`, rendezVous);
+    return this.http.post(`${this.apiUrl}/save`, rendezVous,{headers});
 }
 
 updateRendezVous(rendezVous: any): Observable<void> {
+  const headers = this.auth.sendToken();
+    console.log(this.auth.getToken())
     console.log('Updating RendezVous:', rendezVous);
-    return this.http.put<void>(`${this.apiUrl}/update`, rendezVous);
+    return this.http.put<void>(`${this.apiUrl}/update`, rendezVous,{headers});
 }
 
   deleteRendezVous(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
+    const headers = this.auth.sendToken();
+    console.log(this.auth.getToken())
+    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`,{headers});
   }
   getAllStudents(): Observable<Utilisateur[]> {
     return this.http.get<Utilisateur[]>(`${this.apiUrl2}/getallstudents`);
   }
 
   getAllEnseignants(): Observable<Utilisateur[]> {
-    return this.http.get<Utilisateur[]>(`${this.apiUrl2}/getallenseignants`);
+    const headers = this.auth.sendToken();
+    console.log(this.auth.getToken())
+    return this.http.get<Utilisateur[]>(`${this.apiUrl2}/getallenseignants`,{headers});
   }
+  getRendezVousCountByStatus(): Observable<any> {
+    const headers = this.auth.sendToken();
+    console.log(this.auth.getToken())
+    return this.http.get<any>(`${this.apiUrl}/rendezvous/status-count`,{headers});
+  }
+  getTotalRendezVousCount(): Observable<number> {
+    const headers = this.auth.sendToken();
+    console.log(this.auth.getToken())
+    return this.http.get<number>(`${this.apiUrl}/rendezvous/total-count`,{headers});
+}
 }

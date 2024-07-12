@@ -63,7 +63,8 @@
         <label for="startTime">Start Time</label>
         <input id="startTime" type="datetime-local" pInputText formControlName="startTime">
         <div *ngIf="rendezVousForm.controls['startTime'].invalid && rendezVousForm.controls['startTime'].touched" class="p-error">
-          Start Time is required
+          <div *ngIf="rendezVousForm.controls['startTime'].errors.required">Start Time is required</div>
+          <div *ngIf="rendezVousForm.controls['startTime'].errors.startTimeInvalid">Start Time cannot be in the past</div>
         </div>
       </div>
 
@@ -71,16 +72,18 @@
         <label for="endTime">End Time</label>
         <input id="endTime" type="datetime-local" pInputText formControlName="endTime">
         <div *ngIf="rendezVousForm.controls['endTime'].invalid && rendezVousForm.controls['endTime'].touched" class="p-error">
-          End Time is required
+          <div *ngIf="rendezVousForm.controls['endTime'].errors.required">End Time is required</div>
+          <div *ngIf="rendezVousForm.controls['endTime'].errors.endTimeInvalid">End Time cannot be before Start Time</div>
         </div>
       </div>
+
 
       <div class="p-field">
         <ng-container *ngIf="updateRdv">
           <label for="statut">Status</label>
           <p-dropdown id="statut" [options]="statusOptions" formControlName="statut"></p-dropdown>
         </ng-container>
-        <div *ngIf="rendezVousForm.controls['statut'] && updateRdv && rendezVousForm.controls['statut'].touched" class="p-error">
+        <div *ngIf="rendezVousForm.controls['statut']  && rendezVousForm.controls['statut'].touched" class="p-error">
           Status is required
         </div>
       </div>
