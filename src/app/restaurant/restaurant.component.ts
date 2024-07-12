@@ -1,16 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ImportsModule } from '../imports';
-<<<<<<< HEAD
 import { DemandeMenu } from '../models/DemandeMenu';
 import { Menu } from '../models/Menu';
 import { Repas } from '../models/Repas';
-=======
-import { DemandeMenu } from '../Models/DemandeMenu';
-import { Menu } from '../Models/Menu';
-import { Repas } from '../Models/Repas';
-import { Utilisateur } from '../Models/Utilisateur';
+// import { DemandeMenu } from '../Models/DemandeMenu';
+// import { Menu } from '../Models/Menu';
+// import { Repas } from '../Models/Repas';
+import { Utilisateur } from '../models/Utilisateur';
 import { AuthServiceService } from '../Services/auth-service.service';
->>>>>>> leith
 import { RestaurationServiceService } from '../Services/restauration-service.service';
 import { UserServiceService } from '../Services/user-service.service';
 
